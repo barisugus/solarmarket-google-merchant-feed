@@ -5,13 +5,11 @@ Scrapes JSON-LD from turkiyesolarmarket.com.tr product pages
 Generates RSS 2.0 XML feed with Google Shopping namespace
 
 Usage:
-  python generate_feed.py                  # Generate to merchant-feed.xml
-  python generate_feed.py --upload         # Generate + FTP upload
+  python generate_feed.py    # Generate merchant-feed.xml
 """
 
 import hashlib
 import json
-import os
 import re
 import sys
 import time
@@ -232,29 +230,6 @@ def generate_feed(products):
     return "\n".join(lines)
 
 
-def upload_ftp(local_path):
-    from ftplib import FTP_TLS, FTP
-
-    host = "37.148.209.147"
-    user = os.environ.get("FTP_USER")
-    passwd = os.environ.get("FTP_PASS")
-
-    if not user or not passwd:
-        print("ERROR: FTP_USER and FTP_PASS environment variables required")
-        sys.exit(1)
-
-    print(f"Uploading {local_path} to {host}...")
-    ftp = FTP()
-    ftp.connect(host, 21, timeout=30)
-    ftp.login(user, passwd)
-    ftp.set_pasv(False)
-    ftp.cwd("/httpdocs")
-    with open(local_path, "rb") as f:
-        ftp.storbinary(f"STOR merchant-feed.xml", f)
-    ftp.quit()
-    print("Upload complete: httpdocs/merchant-feed.xml")
-
-
 def main():
     print("=== Google Merchant Center Feed Generator ===")
     print()
@@ -306,11 +281,8 @@ def main():
     print(f"Brands: {', '.join(f'{b}({c})' for b, c in sorted(brands.items(), key=lambda x: -x[1])[:5])}")
 
     if len(products) < 10:
-        print("ERROR: Too few products scraped, aborting upload")
+        print("ERROR: Too few products scraped, feed not saved")
         sys.exit(1)
-
-    if "--upload" in sys.argv:
-        upload_ftp(OUTPUT_FILE)
 
 
 if __name__ == "__main__":
