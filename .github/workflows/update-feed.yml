@@ -1,0 +1,33 @@
+name: Update Merchant Feed
+
+on:
+  schedule:
+    - cron: '0 1 * * *'  # Her gun 04:00 TR (01:00 UTC)
+  workflow_dispatch:       # Manuel tetikleme
+
+jobs:
+  generate-and-upload:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Generate feed
+        run: python generate_feed.py --upload
+        env:
+          FTP_USER: ${{ secrets.FTP_USER }}
+          FTP_PASS: ${{ secrets.FTP_PASS }}
+
+      - name: Verify feed on server
+        run: |
+          sleep 5
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" "https://www.turkiyesolarmarket.com.tr/merchant-feed.xml")
+          echo "Feed URL status: $STATUS"
+          if [ "$STATUS" != "200" ]; then
+            echo "WARNING: Feed URL returned $STATUS"
+          fi
