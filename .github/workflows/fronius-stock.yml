@@ -1,0 +1,41 @@
+name: Fronius Stock Tracker
+
+on:
+  schedule:
+    - cron: '0 5 * * *'  # Her gun 08:00 TR (05:00 UTC)
+  workflow_dispatch:       # Manuel tetikleme
+
+permissions:
+  contents: write
+
+jobs:
+  check-stock:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install openpyxl
+
+      - name: Run stock tracker
+        env:
+          SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
+        run: python fronius-stock/fronius_stock_tracker.py
+
+      - name: Commit updated stock data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add fronius-stock/previous_stock.json
+          if git diff --cached --quiet; then
+            echo "No changes to stock data"
+          else
+            git commit -m "Update Fronius stock data $(date -u +%Y-%m-%d)"
+            git push
+          fi
