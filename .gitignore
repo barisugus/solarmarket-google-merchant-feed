@@ -11,6 +11,7 @@ fronius-stock/arcelik_sync_report.csv
 fronius-stock/arcelik_panel_insert_report.csv
 fronius-stock/extracted_images/
 fronius-stock/.venv/
+fronius-stock/backups/
 *.pdf
 *.xlsx
 *.png
