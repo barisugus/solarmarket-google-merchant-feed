@@ -1,0 +1,1976 @@
+[
+  {
+    "id": 1612,
+    "name": "BYD Battery Box LV5.0 – 5 kWh 51.2V Lityum Enerji Depolama Bataryasi",
+    "sku": "BYD-LV5",
+    "brand": "BYD",
+    "categories": [
+      "BYD Lityum Pil",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1613,
+    "name": "BYD Battery Box LVL Premium – 15.4 kWh Lityum Enerji Depolama Bataryasi",
+    "sku": "BYD-LVL",
+    "brand": "BYD",
+    "categories": [
+      "BYD Lityum Pil",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1671,
+    "name": "Deye 10 kW Mono Faz Hibrit Inverter LV",
+    "sku": "SUN-10K-SG02LP1-EU",
+    "brand": "Deye",
+    "categories": [
+      "Deye",
+      "İnverter Markaları",
+      "Hibrit İnverterler"
+    ]
+  },
+  {
+    "id": 1659,
+    "name": "Deye 10 kW Mono Faz On-Grid String Inverter",
+    "sku": "SUN-10K-MONO",
+    "brand": "Deye",
+    "categories": [
+      "Deye",
+      "İnverter Markaları"
+    ]
+  },
+  {
+    "id": 1678,
+    "name": "Deye 10 kW Tri Faz Hibrit Inverter HV",
+    "sku": "SUN-10K-SG01HP3-EU",
+    "brand": "Deye",
+    "categories": [
+      "Deye",
+      "İnverter Markaları",
+      "Hibrit İnverterler"
+    ]
+  },
+  {
+    "id": 1674,
+    "name": "Deye 10 kW Tri Faz Hibrit Inverter LV",
+    "sku": "SUN-10K-SG04LP3-EU",
+    "brand": "Deye",
+    "categories": [
+      "Deye",
+      "İnverter Markaları",
+      "Hibrit İnverterler"
+    ]
+  },
+  {
+    "id": 1662,
+    "name": "Deye 10 kW Tri Faz On-Grid Inverter",
+    "sku": "SUN-10K-G06P3-EU-AM2",
+    "brand": "Deye",
+    "categories": [
+      "Deye",
+      "İnverter Markaları"
+    ]
+  },
+  {
+    "id": 1679,
+    "name": "Deye 12 kW Tri Faz Hibrit Inverter HV",
+    "sku": "SUN-12K-SG01HP3-EU",
+    "brand": "Deye",
+    "categories": [
+      "Deye",
+      "İnverter Markaları",
+      "Hibrit İnverterler"
+    ]
+  },
+  {
+    "id": 1675,
+    "name": "Deye 12 kW Tri Faz Hibrit Inverter LV",
+    "sku": "SUN-12K-SG04LP3-EU",
+    "brand": "Deye",
+    "categories": [
+      "Deye",
+      "İnverter Markaları",
+      "Hibrit İnverterler"
+    ]
+  },
+  {
+    "id": 1663,
+    "name": "Deye 12 kW Tri Faz On-Grid Inverter",
+    "sku": "SUN-12K-G06P3-EU-AM2",
+    "brand": "Deye",
+    "categories": [
+      "Deye",
+      "İnverter Markaları"
+    ]
+  },
+  {
+    "id": 1680,
+    "name": "Deye 15 kW Tri Faz Hibrit Inverter HV",
+    "sku": "SUN-15K-SG01HP3-EU",
+    "brand": "Deye",
+    "categories": [
+      "Deye",
+      "İnverter Markaları",
+      "Hibrit İnverterler"
+    ]
+  },
+  {
+    "id": 1676,
+    "name": "Deye 15 kW Tri Faz Hibrit Inverter LV",
+    "sku": "SUN-15K-SG05LP3-EU-SM2",
+    "brand": "Deye",
+    "categories": [
+      "Deye",
+      "İnverter Markaları",
+      "Hibrit İnverterler"
+    ]
+  },
+  {
+    "id": 1664,
+    "name": "Deye 15 kW Tri Faz On-Grid Inverter",
+    "sku": "SUN-15K-G05",
+    "brand": "Deye",
+    "categories": [
+      "Deye",
+      "İnverter Markaları"
+    ]
+  },
+  {
+    "id": 1672,
+    "name": "Deye 16 kW Mono Faz Hibrit Inverter LV",
+    "sku": "SUN-16K-SG01LP1-EU",
+    "brand": "Deye",
+    "categories": [
+      "Deye",
+      "İnverter Markaları",
+      "Hibrit İnverterler"
+    ]
+  },
+  {
+    "id": 1681,
+    "name": "Deye 20 kW Tri Faz Hibrit Inverter HV",
+    "sku": "SUN-20K-SG01HP3-EU",
+    "brand": "Deye",
+    "categories": [
+      "Deye",
+      "İnverter Markaları",
+      "Hibrit İnverterler"
+    ]
+  },
+  {
+    "id": 1677,
+    "name": "Deye 20 kW Tri Faz Hibrit Inverter LV",
+    "sku": "SUN-20K-SG05LP3-EU-SM2",
+    "brand": "Deye",
+    "categories": [
+      "Deye",
+      "İnverter Markaları",
+      "Hibrit İnverterler"
+    ]
+  },
+  {
+    "id": 1665,
+    "name": "Deye 20 kW Tri Faz On-Grid Inverter",
+    "sku": "SUN-20K-G05",
+    "brand": "Deye",
+    "categories": [
+      "Deye",
+      "İnverter Markaları"
+    ]
+  },
+  {
+    "id": 1682,
+    "name": "Deye 25 kW Tri Faz Hibrit Inverter HV",
+    "sku": "SUN-25K-SG01HP3-EU-AM2",
+    "brand": "Deye",
+    "categories": [
+      "Deye",
+      "İnverter Markaları",
+      "Hibrit İnverterler"
+    ]
+  },
+  {
+    "id": 1666,
+    "name": "Deye 25 kW Tri Faz On-Grid Inverter",
+    "sku": "SUN-25K-G04",
+    "brand": "Deye",
+    "categories": [
+      "Deye",
+      "İnverter Markaları"
+    ]
+  },
+  {
+    "id": 1656,
+    "name": "Deye 3 kW Mono Faz On-Grid String Inverter",
+    "sku": "SUN-3K-MONO",
+    "brand": "Deye",
+    "categories": [
+      "Deye",
+      "İnverter Markaları"
+    ]
+  },
+  {
+    "id": 1683,
+    "name": "Deye 30 kW Tri Faz Hibrit Inverter HV",
+    "sku": "SUN-30K-SG01HP3-EU-BM3",
+    "brand": "Deye",
+    "categories": [
+      "Deye",
+      "İnverter Markaları",
+      "Hibrit İnverterler"
+    ]
+  },
+  {
+    "id": 1667,
+    "name": "Deye 30 kW Tri Faz On-Grid Inverter",
+    "sku": "SUN-30K-G04",
+    "brand": "Deye",
+    "categories": [
+      "Deye",
+      "İnverter Markaları"
+    ]
+  },
+  {
+    "id": 1684,
+    "name": "Deye 40 kW Tri Faz Hibrit Inverter HV",
+    "sku": "SUN-40K-SG01HP3-EU-BM3",
+    "brand": "Deye",
+    "categories": [
+      "Deye",
+      "İnverter Markaları",
+      "Hibrit İnverterler"
+    ]
+  },
+  {
+    "id": 1668,
+    "name": "Deye 40 kW Tri Faz On-Grid Inverter",
+    "sku": "SUN-40K-G04",
+    "brand": "Deye",
+    "categories": [
+      "Deye",
+      "İnverter Markaları"
+    ]
+  },
+  {
+    "id": 1669,
+    "name": "Deye 5 kW Mono Faz Hibrit Inverter LV",
+    "sku": "SUN-5K-SG03LP1-EU",
+    "brand": "Deye",
+    "categories": [
+      "Deye",
+      "İnverter Markaları",
+      "Hibrit İnverterler"
+    ]
+  },
+  {
+    "id": 1657,
+    "name": "Deye 5 kW Mono Faz On-Grid String Inverter",
+    "sku": "SUN-5K-MONO",
+    "brand": "Deye",
+    "categories": [
+      "Deye",
+      "İnverter Markaları"
+    ]
+  },
+  {
+    "id": 1660,
+    "name": "Deye 5 kW Tri Faz On-Grid Inverter",
+    "sku": "SUN-5K-G06P3-EU-AM2",
+    "brand": "Deye",
+    "categories": [
+      "Deye",
+      "İnverter Markaları"
+    ]
+  },
+  {
+    "id": 1685,
+    "name": "Deye 50 kW Tri Faz Hibrit Inverter HV",
+    "sku": "SUN-50K-SG05LP3-EU-SM2",
+    "brand": "Deye",
+    "categories": [
+      "Deye",
+      "İnverter Markaları",
+      "Hibrit İnverterler"
+    ]
+  },
+  {
+    "id": 1670,
+    "name": "Deye 6 kW Mono Faz Hibrit Inverter LV",
+    "sku": "SUN-6K-SG03LP1-EU",
+    "brand": "Deye",
+    "categories": [
+      "Deye",
+      "İnverter Markaları",
+      "Hibrit İnverterler"
+    ]
+  },
+  {
+    "id": 1658,
+    "name": "Deye 8 kW Mono Faz On-Grid String Inverter",
+    "sku": "SUN-8K-MONO",
+    "brand": "Deye",
+    "categories": [
+      "Deye",
+      "İnverter Markaları"
+    ]
+  },
+  {
+    "id": 1673,
+    "name": "Deye 8 kW Tri Faz Hibrit Inverter LV",
+    "sku": "SUN-8K-SG04LP3-EU",
+    "brand": "Deye",
+    "categories": [
+      "Deye",
+      "İnverter Markaları",
+      "Hibrit İnverterler"
+    ]
+  },
+  {
+    "id": 1661,
+    "name": "Deye 8 kW Tri Faz On-Grid Inverter",
+    "sku": "SUN-8K-G06P3-EU-AM2",
+    "brand": "Deye",
+    "categories": [
+      "Deye",
+      "İnverter Markaları"
+    ]
+  },
+  {
+    "id": 1686,
+    "name": "Deye 80 kW Tri Faz Hibrit Inverter HV",
+    "sku": "SUN-80K-SG05LP3-EU-SM3",
+    "brand": "Deye",
+    "categories": [
+      "Deye",
+      "İnverter Markaları",
+      "Hibrit İnverterler"
+    ]
+  },
+  {
+    "id": 1688,
+    "name": "Deye LAN Stick",
+    "sku": "DEYE-LAN-STICK",
+    "brand": "Deye",
+    "categories": [
+      "Solar Malzemeler",
+      "Deye"
+    ]
+  },
+  {
+    "id": 1689,
+    "name": "Deye Monofaze Smart Meter",
+    "sku": "DEYE-SMART-METER-1P",
+    "brand": "Deye",
+    "categories": [
+      "Solar Malzemeler",
+      "Deye"
+    ]
+  },
+  {
+    "id": 1690,
+    "name": "Deye Trifaze Smart Meter",
+    "sku": "DEYE-SMART-METER-3P",
+    "brand": "Deye",
+    "categories": [
+      "Solar Malzemeler",
+      "Deye"
+    ]
+  },
+  {
+    "id": 1687,
+    "name": "Deye WiFi Stick",
+    "sku": "DEYE-WIFI-STICK",
+    "brand": "Deye",
+    "categories": [
+      "Solar Malzemeler",
+      "Deye"
+    ]
+  },
+  {
+    "id": 1764,
+    "name": "Solinved 1.5 kW Mono Faz Solar Pompa Sürücü 220V",
+    "sku": "SOL-CDI-SPDG1R5-SS2",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1769,
+    "name": "Solinved 1.5 kW Tri Faz Solar Pompa Sürücü 380V",
+    "sku": "SOL-CDI-SPDG1R5T4",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1785,
+    "name": "Solinved 1.5-5.5 kW Pompa Sürücü Panosu",
+    "sku": "DKP-TIP1-PANO",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1716,
+    "name": "Solinved 1000W Modified Sine Inverter 12V",
+    "sku": "SLVM1000",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "İnverter Markaları"
+    ]
+  },
+  {
+    "id": 1703,
+    "name": "Solinved 1000W Pure Sine Inverter 12V",
+    "sku": "SLVP1000",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "İnverter Markaları"
+    ]
+  },
+  {
+    "id": 1712,
+    "name": "Solinved 1000W Pure Sine UPS Inverter 12V",
+    "sku": "SLVU1000",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "İnverter Markaları"
+    ]
+  },
+  {
+    "id": 1727,
+    "name": "Solinved 100A MPPT Sarj Kontrol Cihazi 12V/48V",
+    "sku": "SOL-MPK100",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1739,
+    "name": "Solinved 102.4V 100Ah Lityum Duvar Tipi Batarya",
+    "sku": "SOL-XH",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1728,
+    "name": "Solinved 10A PWM Sarj Kontrol Cihazi 12/24V",
+    "sku": "SOL-LT10-1024",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1774,
+    "name": "Solinved 11 kW Tri Faz Solar Pompa Sürücü 380V",
+    "sku": "SOL-CDI-SPDG011T4",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1784,
+    "name": "Solinved 110 kW Tri Faz Solar Pompa Sürücü 380V",
+    "sku": "SOL-CDI-SPDG110T4",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1735,
+    "name": "Solinved 12V 100Ah Lityum Batarya",
+    "sku": "SOL-1280",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1732,
+    "name": "Solinved 12V 100Ah Solar Jel Akü Deep Cycle",
+    "sku": "SOL12-100",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1801,
+    "name": "Solinved 12V 12Ah Kursun Asit Akü",
+    "sku": "SOL-12-12",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1802,
+    "name": "Solinved 12V 14Ah E-Bike Batarya",
+    "sku": "SOL-12-14",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1733,
+    "name": "Solinved 12V 150Ah Solar Jel Akü Deep Cycle",
+    "sku": "SOL12-150",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1734,
+    "name": "Solinved 12V 200Ah Solar Jel Akü Deep Cycle",
+    "sku": "SOL12-200",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1803,
+    "name": "Solinved 12V 24Ah E-Bike Batarya",
+    "sku": "SOL-12-24",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1804,
+    "name": "Solinved 12V 24Ah Premium E-Bike Batarya",
+    "sku": "SOL-12-24-PREMIUM",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1798,
+    "name": "Solinved 12V 7Ah Kursun Asit Akü",
+    "sku": "SOL-12-7",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1799,
+    "name": "Solinved 12V 7Ah Premium Kursun Asit Akü",
+    "sku": "SOL-12-7-PREMIUM",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1800,
+    "name": "Solinved 12V 9Ah Kursun Asit Akü",
+    "sku": "SOL-12-9",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1775,
+    "name": "Solinved 15 kW Tri Faz Solar Pompa Sürücü 380V",
+    "sku": "SOL-CDI-SPDG015T4",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1717,
+    "name": "Solinved 1500W Modified Sine Inverter 12V",
+    "sku": "SLVM1500",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "İnverter Markaları"
+    ]
+  },
+  {
+    "id": 1720,
+    "name": "Solinved 1500W Modified Sine Inverter 24V",
+    "sku": "SLVM1500-24",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "İnverter Markaları"
+    ]
+  },
+  {
+    "id": 1704,
+    "name": "Solinved 1500W Pure Sine Inverter 12V",
+    "sku": "SLVP1500",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "İnverter Markaları"
+    ]
+  },
+  {
+    "id": 1709,
+    "name": "Solinved 1500W Pure Sine Inverter 24V",
+    "sku": "SLVP1500-24",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "İnverter Markaları"
+    ]
+  },
+  {
+    "id": 1713,
+    "name": "Solinved 1500W Pure Sine UPS Inverter 12V",
+    "sku": "SLVU1500",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "İnverter Markaları"
+    ]
+  },
+  {
+    "id": 1749,
+    "name": "Solinved 16A 1000V DC Sigorta",
+    "sku": "SLVFS-16",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1776,
+    "name": "Solinved 18.5 kW Tri Faz Solar Pompa Sürücü 380V",
+    "sku": "SOL-CDI-SPDG018T4",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1787,
+    "name": "Solinved 18.5-22 kW Pompa Sürücü Panosu",
+    "sku": "DKP-TIP3-PANO",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1765,
+    "name": "Solinved 2.2 kW Mono Faz Solar Pompa Sürücü 220V",
+    "sku": "SOL-CDI-SPDG2R2-SS2",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1770,
+    "name": "Solinved 2.2 kW Tri Faz Solar Pompa Sürücü 380V",
+    "sku": "SOL-CDI-SPDG2R2T4",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1767,
+    "name": "Solinved 2.2 kW Tri Faz Solar Pompa Sürücü 3x220V",
+    "sku": "SOL-CDI-SPDG2R2-S2",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1718,
+    "name": "Solinved 2000W Modified Sine Inverter 12V",
+    "sku": "SLVM2000",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "İnverter Markaları"
+    ]
+  },
+  {
+    "id": 1705,
+    "name": "Solinved 2000W Pure Sine Inverter 12V",
+    "sku": "SLVP2000",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "İnverter Markaları"
+    ]
+  },
+  {
+    "id": 1722,
+    "name": "Solinved 20A MPPT Sarj Kontrol Cihazi 12V/24V",
+    "sku": "SOL-MPPT320D",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1729,
+    "name": "Solinved 20A PWM Sarj Kontrol Cihazi 12/24V",
+    "sku": "SOL-LT20-2024",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1777,
+    "name": "Solinved 22 kW Tri Faz Solar Pompa Sürücü 380V",
+    "sku": "SOL-CDI-SPDG022T4",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1736,
+    "name": "Solinved 24V 100Ah Lityum Batarya",
+    "sku": "SOL-2560",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1719,
+    "name": "Solinved 2500W Modified Sine Inverter 12V",
+    "sku": "SLVM2500",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "İnverter Markaları"
+    ]
+  },
+  {
+    "id": 1706,
+    "name": "Solinved 2500W Pure Sine Inverter 12V",
+    "sku": "SLVP2500",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "İnverter Markaları"
+    ]
+  },
+  {
+    "id": 1756,
+    "name": "Solinved 2x10 Solar Montaj Yapi Seti",
+    "sku": "KONST-2X10",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1755,
+    "name": "Solinved 2x15 Solar Montaj Yapi Seti",
+    "sku": "KONST-2X15",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1761,
+    "name": "Solinved 2x4 Solar Montaj Yapi Seti",
+    "sku": "KONST-2X4",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1760,
+    "name": "Solinved 2x5 Solar Montaj Yapi Seti",
+    "sku": "KONST-2X5",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1759,
+    "name": "Solinved 2x7 Solar Montaj Yapi Seti",
+    "sku": "KONST-2X7",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1758,
+    "name": "Solinved 2x8 Solar Montaj Yapi Seti",
+    "sku": "KONST-2X8",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1757,
+    "name": "Solinved 2x9 Solar Montaj Yapi Seti",
+    "sku": "KONST-2X9",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1778,
+    "name": "Solinved 30 kW Tri Faz Solar Pompa Sürücü 380V",
+    "sku": "SOL-CDI-SPDG030T4",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1721,
+    "name": "Solinved 3000W Modified Sine Inverter 24V",
+    "sku": "SLVM3000-24",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "İnverter Markaları"
+    ]
+  },
+  {
+    "id": 1707,
+    "name": "Solinved 3000W Pure Sine Inverter 12V",
+    "sku": "SLVP3000",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "İnverter Markaları"
+    ]
+  },
+  {
+    "id": 1710,
+    "name": "Solinved 3000W Pure Sine Inverter 24V",
+    "sku": "SLVP3000-24",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "İnverter Markaları"
+    ]
+  },
+  {
+    "id": 1714,
+    "name": "Solinved 300W Modified Sine Inverter 12V",
+    "sku": "SLVM300",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "İnverter Markaları"
+    ]
+  },
+  {
+    "id": 1788,
+    "name": "Solinved 30-37 kW Pompa Sürücü Panosu",
+    "sku": "DKP-TIP4-PANO",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1723,
+    "name": "Solinved 30A MPPT Sarj Kontrol Cihazi 12V/24V",
+    "sku": "SOL-MPPT330D",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1730,
+    "name": "Solinved 30A PWM Sarj Kontrol Cihazi 12/24V",
+    "sku": "SOL-LT30-3024",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1750,
+    "name": "Solinved 32A 1000V DC Sigorta",
+    "sku": "SLVFS-32",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1779,
+    "name": "Solinved 37 kW Tri Faz Solar Pompa Sürücü 380V",
+    "sku": "SOL-CDI-SPDG037T4",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1766,
+    "name": "Solinved 4 kW Mono Faz Solar Pompa Sürücü 220V",
+    "sku": "SOL-CDI-SPDG4R0-SS2",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1771,
+    "name": "Solinved 4 kW Tri Faz Solar Pompa Sürücü 380V",
+    "sku": "SOL-CDI-SPDG4R0T4",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1768,
+    "name": "Solinved 4 kW Tri Faz Solar Pompa Sürücü 3x220V",
+    "sku": "SOL-CDI-SPDG4R0-S2",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1708,
+    "name": "Solinved 4000W Pure Sine Inverter 12V",
+    "sku": "SLVP4000",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "İnverter Markaları"
+    ]
+  },
+  {
+    "id": 1724,
+    "name": "Solinved 40A MPPT Sarj Kontrol Cihazi 12V/24V",
+    "sku": "SOL-MPPT340D",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1731,
+    "name": "Solinved 40A PWM Sarj Kontrol Cihazi 12/24V",
+    "sku": "SOL-LT40-4024",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1780,
+    "name": "Solinved 45 kW Tri Faz Solar Pompa Sürücü 380V",
+    "sku": "SOL-CDI-SPDG045T4",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1789,
+    "name": "Solinved 45-55 kW Pompa Sürücü Panosu",
+    "sku": "DKP-TIP5-PANO",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1772,
+    "name": "Solinved 5.5 kW Tri Faz Solar Pompa Sürücü 380V",
+    "sku": "SOL-CDI-SPDG5R5T4",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1738,
+    "name": "Solinved 51.2V 300Ah Lityum Duvar Tipi Batarya",
+    "sku": "SOL-WL-15",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1781,
+    "name": "Solinved 55 kW Tri Faz Solar Pompa Sürücü 380V",
+    "sku": "SOL-CDI-SPDG055T4",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1715,
+    "name": "Solinved 600W Modified Sine Inverter 12V",
+    "sku": "SLVM600",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "İnverter Markaları"
+    ]
+  },
+  {
+    "id": 1702,
+    "name": "Solinved 600W Pure Sine Inverter 12V",
+    "sku": "SLVP600",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "İnverter Markaları"
+    ]
+  },
+  {
+    "id": 1711,
+    "name": "Solinved 600W Pure Sine UPS Inverter 12V",
+    "sku": "SLVU600",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "İnverter Markaları"
+    ]
+  },
+  {
+    "id": 1725,
+    "name": "Solinved 60A MPPT Sarj Kontrol Cihazi 12V/48V",
+    "sku": "SOL-MPK60",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1773,
+    "name": "Solinved 7.5 kW Tri Faz Solar Pompa Sürücü 380V",
+    "sku": "SOL-CDI-SPDG7R5T4",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1786,
+    "name": "Solinved 7.5-15 kW Pompa Sürücü Panosu",
+    "sku": "DKP-TIP2-PANO",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1782,
+    "name": "Solinved 75 kW Tri Faz Solar Pompa Sürücü 380V",
+    "sku": "SOL-CDI-SPDG075T4",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1726,
+    "name": "Solinved 80A MPPT Sarj Kontrol Cihazi 12V/48V",
+    "sku": "SOL-MPK80",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1783,
+    "name": "Solinved 90 kW Tri Faz Solar Pompa Sürücü 380V",
+    "sku": "SOL-CDI-SPDG090T4",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1762,
+    "name": "Solinved Angora 22 kW AC Sarj Cihazi OCPP",
+    "sku": "SOL-EV-ANGORA-22",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1701,
+    "name": "Solinved Aspendos All-In-One Batarya Modülü 5 kWh",
+    "sku": "ASPENDOS-BAT",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1700,
+    "name": "Solinved Aspendos All-In-One Inverter Modülü 6 kW 48V",
+    "sku": "ASPENDOS-INV",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "İnverter Markaları"
+    ]
+  },
+  {
+    "id": 1793,
+    "name": "Solinved CM04 Solar Kamera 4G",
+    "sku": "CM04-4G",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1791,
+    "name": "Solinved CM04 Solar Kamera WiFi",
+    "sku": "CM04-WIFI",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1795,
+    "name": "Solinved CM09 Solar Kamera 4G",
+    "sku": "CM09-4G",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1796,
+    "name": "Solinved CM22 Solar Kamera 4G",
+    "sku": "CM22-4G",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1794,
+    "name": "Solinved CM22 Solar Kamera WiFi",
+    "sku": "CM22-WIFI",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1790,
+    "name": "Solinved CM26 Solar Kamera 4G",
+    "sku": "CM26-4G",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1792,
+    "name": "Solinved CM27 Solar Kamera 4G",
+    "sku": "CM27-4G",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1743,
+    "name": "Solinved DC 100A 1000V Devre Kesici",
+    "sku": "SOLM3DC-100",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1744,
+    "name": "Solinved DC 125A 1000V Devre Kesici",
+    "sku": "SOLM3DC-125",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1745,
+    "name": "Solinved DC 200A 1000V Devre Kesici",
+    "sku": "SOLM3DC-200",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1746,
+    "name": "Solinved DC 250A 1000V Devre Kesici",
+    "sku": "SOLM3DC-250",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1747,
+    "name": "Solinved DC 315A 1000V Devre Kesici",
+    "sku": "SOLM3DC-315",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1748,
+    "name": "Solinved DC 350A 1000V Devre Kesici",
+    "sku": "SOLM3DC-350",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1742,
+    "name": "Solinved DC 80A 1000V Devre Kesici",
+    "sku": "SOLM3DC-80",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1751,
+    "name": "Solinved DC Sigorta Yuvasi 10x38mm",
+    "sku": "SLVFSHL",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1691,
+    "name": "Solinved Gordion 1.2 kW MPPT Off-Grid Inverter 12V",
+    "sku": "SLV-1200-12",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Off Grid İnverter",
+      "İnverter Markaları"
+    ]
+  },
+  {
+    "id": 1692,
+    "name": "Solinved Gordion 3.6 kW MPPT Off-Grid Inverter 24V",
+    "sku": "SLV-3600-24",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Off Grid İnverter",
+      "İnverter Markaları"
+    ]
+  },
+  {
+    "id": 1693,
+    "name": "Solinved Gordion 5 kW MPPT Off-Grid Inverter 24V",
+    "sku": "SLV-5000-24",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Off Grid İnverter",
+      "İnverter Markaları"
+    ]
+  },
+  {
+    "id": 1694,
+    "name": "Solinved Gordion 5 kW MPPT Off-Grid Inverter 48V",
+    "sku": "SLV-5000-48",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Off Grid İnverter",
+      "İnverter Markaları"
+    ]
+  },
+  {
+    "id": 1695,
+    "name": "Solinved Gordion 6 kW MPPT Off-Grid Inverter 48V",
+    "sku": "SLV-6000-48",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Off Grid İnverter",
+      "İnverter Markaları"
+    ]
+  },
+  {
+    "id": 1696,
+    "name": "Solinved Gordion 6.5 kW MPPT Off-Grid Inverter 48V",
+    "sku": "SLV-6500-48",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Off Grid İnverter",
+      "İnverter Markaları"
+    ]
+  },
+  {
+    "id": 1737,
+    "name": "Solinved Kapadokya 51.2V 100Ah Lityum Rack Batarya",
+    "sku": "SOL-5100-HV-LV",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1797,
+    "name": "Solinved L8 Solar Router 4G",
+    "sku": "L8-4G",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1741,
+    "name": "Solinved Lityum Batarya Güç Kablo Seti 2x1.5m",
+    "sku": "SOL-LITHIUM-CABLE",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1697,
+    "name": "Solinved Max 8.2 kW MPPT Off-Grid Inverter 48V",
+    "sku": "MAX-8.2",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Off Grid İnverter",
+      "İnverter Markaları"
+    ]
+  },
+  {
+    "id": 1754,
+    "name": "Solinved MC4 Sikma Pensesi (Crimping Tool)",
+    "sku": "SOL-MC4-KIT",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Konnektör"
+    ]
+  },
+  {
+    "id": 1752,
+    "name": "Solinved MC4 Solar Konnektör Seti 1000V",
+    "sku": "SOL-MC4-1000",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Konnektör"
+    ]
+  },
+  {
+    "id": 1753,
+    "name": "Solinved MC4 Solar Konnektör Seti 1500V",
+    "sku": "SOL-MC4H-1500",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Konnektör"
+    ]
+  },
+  {
+    "id": 1698,
+    "name": "Solinved NML 1.6 kW MPPT Off-Grid Inverter 12V",
+    "sku": "NML-2000-12",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Off Grid İnverter",
+      "İnverter Markaları"
+    ]
+  },
+  {
+    "id": 1699,
+    "name": "Solinved PS Plus 1 kW PWM Smart Inverter 12V",
+    "sku": "PS-PLUS-1K",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "İnverter Markaları"
+    ]
+  },
+  {
+    "id": 1763,
+    "name": "Solinved Radius 22 kW AC Sarj Cihazi",
+    "sku": "SOL-EV-RADIUS-22",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1740,
+    "name": "Solinved XH Control Box",
+    "sku": "SOL-XH-CONTROLBOX",
+    "brand": "Solinved",
+    "categories": [
+      "Solinved",
+      "Solar Malzemeler"
+    ]
+  },
+  {
+    "id": 1614,
+    "name": "Solis 1.5 kW Mono Faz Mini On-Grid Inverter",
+    "sku": "Solis-Mini-1500-4G-DC",
+    "brand": "Solis",
+    "categories": [
+      "Solis",
+      "İnverter Markaları"
+    ]
+  },
+  {
+    "id": 1642,
+    "name": "Solis 10 kW Tri Faz Hibrit Inverter HV",
+    "sku": "S6-EH3P10K-H-EU",
+    "brand": "Solis",
+    "categories": [
+      "Solis",
+      "İnverter Markaları",
+      "Hibrit İnverterler"
+    ]
+  },
+  {
+    "id": 1637,
+    "name": "Solis 10 kW Tri Faz Hibrit Inverter LV",
+    "sku": "S6-EH3P10K02-NV-YD-L",
+    "brand": "Solis",
+    "categories": [
+      "Solis",
+      "İnverter Markaları",
+      "Hibrit İnverterler"
+    ]
+  },
+  {
+    "id": 1623,
+    "name": "Solis 10 kW Tri Faz On-Grid Inverter",
+    "sku": "Solis-3P10K-4G-DC",
+    "brand": "Solis",
+    "categories": [
+      "Solis",
+      "İnverter Markaları"
+    ]
+  },
+  {
+    "id": 1634,
+    "name": "Solis 12 kW Mono Faz Hibrit Inverter LV",
+    "sku": "S6-EH1P12K03-NV-YD-L",
+    "brand": "Solis",
+    "categories": [
+      "Solis",
+      "İnverter Markaları",
+      "Hibrit İnverterler"
+    ]
+  },
+  {
+    "id": 1643,
+    "name": "Solis 12 kW Tri Faz Hibrit Inverter HV",
+    "sku": "S6-EH3P12K-H-EU",
+    "brand": "Solis",
+    "categories": [
+      "Solis",
+      "İnverter Markaları",
+      "Hibrit İnverterler"
+    ]
+  },
+  {
+    "id": 1638,
+    "name": "Solis 12 kW Tri Faz Hibrit Inverter LV",
+    "sku": "S6-EH3P12K02-NV-YD-L",
+    "brand": "Solis",
+    "categories": [
+      "Solis",
+      "İnverter Markaları",
+      "Hibrit İnverterler"
+    ]
+  },
+  {
+    "id": 1644,
+    "name": "Solis 15 kW Tri Faz Hibrit Inverter HV",
+    "sku": "S6-EH3P15K-H-EU",
+    "brand": "Solis",
+    "categories": [
+      "Solis",
+      "İnverter Markaları",
+      "Hibrit İnverterler"
+    ]
+  },
+  {
+    "id": 1639,
+    "name": "Solis 15 kW Tri Faz Hibrit Inverter LV",
+    "sku": "S6-EH3P15K02-NV-YD-L",
+    "brand": "Solis",
+    "categories": [
+      "Solis",
+      "İnverter Markaları",
+      "Hibrit İnverterler"
+    ]
+  },
+  {
+    "id": 1624,
+    "name": "Solis 15 kW Tri Faz On-Grid Inverter",
+    "sku": "Solis-3P15K-4G-DC",
+    "brand": "Solis",
+    "categories": [
+      "Solis",
+      "İnverter Markaları"
+    ]
+  },
+  {
+    "id": 1635,
+    "name": "Solis 16 kW Mono Faz Hibrit Inverter LV",
+    "sku": "S6-EH1P16K03-NV-YD-L",
+    "brand": "Solis",
+    "categories": [
+      "Solis",
+      "İnverter Markaları",
+      "Hibrit İnverterler"
+    ]
+  },
+  {
+    "id": 1645,
+    "name": "Solis 20 kW Tri Faz Hibrit Inverter HV",
+    "sku": "S6-EH3P20K-H-EU",
+    "brand": "Solis",
+    "categories": [
+      "Solis",
+      "İnverter Markaları",
+      "Hibrit İnverterler"
+    ]
+  },
+  {
+    "id": 1625,
+    "name": "Solis 20 kW Tri Faz On-Grid Inverter",
+    "sku": "Solis-3P20K-4G-DC",
+    "brand": "Solis",
+    "categories": [
+      "Solis",
+      "İnverter Markaları"
+    ]
+  },
+  {
+    "id": 1626,
+    "name": "Solis 25 kW Tri Faz On-Grid Inverter",
+    "sku": "S5-GC25K",
+    "brand": "Solis",
+    "categories": [
+      "Solis",
+      "İnverter Markaları"
+    ]
+  },
+  {
+    "id": 1615,
+    "name": "Solis 3 kW Mono Faz Mini On-Grid Inverter",
+    "sku": "Solis-Mini-3000-4G-DC",
+    "brand": "Solis",
+    "categories": [
+      "Solis",
+      "İnverter Markaları"
+    ]
+  },
+  {
+    "id": 1616,
+    "name": "Solis 3 kW Mono Faz On-Grid Inverter 2 MPPT",
+    "sku": "Solis-1P3K-4G-DC",
+    "brand": "Solis",
+    "categories": [
+      "Solis",
+      "İnverter Markaları"
+    ]
+  },
+  {
+    "id": 1620,
+    "name": "Solis 3 kW Tri Faz On-Grid Inverter",
+    "sku": "Solis-3P3K-4G-DC",
+    "brand": "Solis",
+    "categories": [
+      "Solis",
+      "İnverter Markaları"
+    ]
+  },
+  {
+    "id": 1646,
+    "name": "Solis 30 kW Tri Faz Hibrit Inverter HV",
+    "sku": "S6-EH3P30K-H-EU",
+    "brand": "Solis",
+    "categories": [
+      "Solis",
+      "İnverter Markaları",
+      "Hibrit İnverterler"
+    ]
+  },
+  {
+    "id": 1627,
+    "name": "Solis 30 kW Tri Faz On-Grid Inverter",
+    "sku": "S5-GC30K",
+    "brand": "Solis",
+    "categories": [
+      "Solis",
+      "İnverter Markaları"
+    ]
+  },
+  {
+    "id": 1617,
+    "name": "Solis 4 kW Mono Faz On-Grid Inverter 2 MPPT",
+    "sku": "Solis-1P4K-4G-DC",
+    "brand": "Solis",
+    "categories": [
+      "Solis",
+      "İnverter Markaları"
+    ]
+  },
+  {
+    "id": 1647,
+    "name": "Solis 40 kW Tri Faz Hibrit Inverter HV",
+    "sku": "S6-EH3P40K-H-EU",
+    "brand": "Solis",
+    "categories": [
+      "Solis",
+      "İnverter Markaları",
+      "Hibrit İnverterler"
+    ]
+  },
+  {
+    "id": 1628,
+    "name": "Solis 40 kW Tri Faz On-Grid Inverter",
+    "sku": "S5-GC40K",
+    "brand": "Solis",
+    "categories": [
+      "Solis",
+      "İnverter Markaları"
+    ]
+  },
+  {
+    "id": 1631,
+    "name": "Solis 5 kW Mono Faz Hibrit Inverter LV",
+    "sku": "S6-EH1P5K-L-PLUS",
+    "brand": "Solis",
+    "categories": [
+      "Solis",
+      "İnverter Markaları",
+      "Hibrit İnverterler"
+    ]
+  },
+  {
+    "id": 1618,
+    "name": "Solis 5 kW Mono Faz On-Grid Inverter 2 MPPT",
+    "sku": "Solis-1P5K-4G-DC",
+    "brand": "Solis",
+    "categories": [
+      "Solis",
+      "İnverter Markaları"
+    ]
+  },
+  {
+    "id": 1640,
+    "name": "Solis 5 kW Tri Faz Hibrit Inverter HV",
+    "sku": "S6-EH3P5K-H-EU",
+    "brand": "Solis",
+    "categories": [
+      "Solis",
+      "İnverter Markaları",
+      "Hibrit İnverterler"
+    ]
+  },
+  {
+    "id": 1621,
+    "name": "Solis 5 kW Tri Faz On-Grid Inverter",
+    "sku": "Solis-3P5K-4G-DC",
+    "brand": "Solis",
+    "categories": [
+      "Solis",
+      "İnverter Markaları"
+    ]
+  },
+  {
+    "id": 1648,
+    "name": "Solis 50 kW Tri Faz Hibrit Inverter HV",
+    "sku": "S6-EH3P50K-H-EU",
+    "brand": "Solis",
+    "categories": [
+      "Solis",
+      "İnverter Markaları",
+      "Hibrit İnverterler"
+    ]
+  },
+  {
+    "id": 1629,
+    "name": "Solis 50 kW Tri Faz On-Grid Inverter",
+    "sku": "Solis-GC-50K",
+    "brand": "Solis",
+    "categories": [
+      "Solis",
+      "İnverter Markaları"
+    ]
+  },
+  {
+    "id": 1632,
+    "name": "Solis 6 kW Mono Faz Hibrit Inverter LV",
+    "sku": "S6-EH1P6K-L-PLUS",
+    "brand": "Solis",
+    "categories": [
+      "Solis",
+      "İnverter Markaları",
+      "Hibrit İnverterler"
+    ]
+  },
+  {
+    "id": 1619,
+    "name": "Solis 6 kW Mono Faz On-Grid Inverter 2 MPPT",
+    "sku": "Solis-1P6K-4G-DC",
+    "brand": "Solis",
+    "categories": [
+      "Solis",
+      "İnverter Markaları"
+    ]
+  },
+  {
+    "id": 1630,
+    "name": "Solis 60 kW Tri Faz On-Grid Inverter",
+    "sku": "Solis-GC-60K",
+    "brand": "Solis",
+    "categories": [
+      "Solis",
+      "İnverter Markaları"
+    ]
+  },
+  {
+    "id": 1633,
+    "name": "Solis 8 kW Mono Faz Hibrit Inverter LV",
+    "sku": "S6-EH1P8K-L-PLUS",
+    "brand": "Solis",
+    "categories": [
+      "Solis",
+      "İnverter Markaları",
+      "Hibrit İnverterler"
+    ]
+  },
+  {
+    "id": 1641,
+    "name": "Solis 8 kW Tri Faz Hibrit Inverter HV",
+    "sku": "S6-EH3P8K-H-EU",
+    "brand": "Solis",
+    "categories": [
+      "Solis",
+      "İnverter Markaları",
+      "Hibrit İnverterler"
+    ]
+  },
+  {
+    "id": 1636,
+    "name": "Solis 8 kW Tri Faz Hibrit Inverter LV",
+    "sku": "S6-EH3P8K02-NV-YD-L",
+    "brand": "Solis",
+    "categories": [
+      "Solis",
+      "İnverter Markaları",
+      "Hibrit İnverterler"
+    ]
+  },
+  {
+    "id": 1622,
+    "name": "Solis 8 kW Tri Faz On-Grid Inverter",
+    "sku": "Solis-3P8K-4G-DC",
+    "brand": "Solis",
+    "categories": [
+      "Solis",
+      "İnverter Markaları"
+    ]
+  },
+  {
+    "id": 1650,
+    "name": "Solis DLB WiFi Box",
+    "sku": "Solis-DLB-WIFI",
+    "brand": "Solis",
+    "categories": [
+      "Solar Malzemeler",
+      "Solis"
+    ]
+  },
+  {
+    "id": 1652,
+    "name": "Solis Export Power Manager (10 Inverter)",
+    "sku": "Solis-EPM3-5G",
+    "brand": "Solis",
+    "categories": [
+      "Solar Malzemeler",
+      "Solis"
+    ]
+  },
+  {
+    "id": 1653,
+    "name": "Solis Export Power Manager Pro (60 Inverter)",
+    "sku": "Solis-EPM3-5G-PRO",
+    "brand": "Solis",
+    "categories": [
+      "Solar Malzemeler",
+      "Solis"
+    ]
+  },
+  {
+    "id": 1654,
+    "name": "Solis Monofaze Smart Meter (CT Dahil)",
+    "sku": "Solis-Smart-Meter-1CT",
+    "brand": "Solis",
+    "categories": [
+      "Solar Malzemeler",
+      "Solis"
+    ]
+  },
+  {
+    "id": 1651,
+    "name": "Solis S2 WiFi Stick (10 Inverter Baglanti)",
+    "sku": "S2-WL-ST",
+    "brand": "Solis",
+    "categories": [
+      "Solar Malzemeler",
+      "Solis"
+    ]
+  },
+  {
+    "id": 1649,
+    "name": "Solis S3 WiFi Stick",
+    "sku": "S3-WiFi-ST",
+    "brand": "Solis",
+    "categories": [
+      "Solar Malzemeler",
+      "Solis"
+    ]
+  },
+  {
+    "id": 1655,
+    "name": "Solis Trifaze Smart Meter (CT Dahil)",
+    "sku": "Solis-Smart-Meter-3CT",
+    "brand": "Solis",
+    "categories": [
+      "Solar Malzemeler",
+      "Solis"
+    ]
+  }
+]
