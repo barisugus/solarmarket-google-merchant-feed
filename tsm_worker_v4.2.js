@@ -849,16 +849,17 @@ async function handleRequest(request) {
     return fetch(request);
   }
 
-  // 4. /merchant-feed.xml → GitHub raw proxy (1h cache)
-  if (pathname === '/merchant-feed.xml') {
-    const ghUrl = 'https://raw.githubusercontent.com/barisugus/solarmarket-google-merchant-feed/main/merchant-feed.xml';
+  // 4. /merchant-feed.xml + /sitemap_new.xml → GitHub raw proxy (1h cache)
+  if (pathname === '/merchant-feed.xml' || pathname === '/sitemap_new.xml') {
+    const fileName = pathname.substring(1); // strip leading /
+    const ghUrl = `https://raw.githubusercontent.com/barisugus/solarmarket-google-merchant-feed/main/${fileName}`;
     const ghResponse = await fetch(ghUrl, {
       cf: { cacheEverything: true, cacheTtl: 3600 },
     });
 
     const headers = new Headers(ghResponse.headers);
     headers.set('content-type', 'application/xml; charset=utf-8');
-    headers.set('x-tsm-worker', 'merchant-feed');
+    headers.set('x-tsm-worker', fileName === 'merchant-feed.xml' ? 'merchant-feed' : 'sitemap');
     headers.delete('set-cookie');
 
     return new Response(ghResponse.body, {
