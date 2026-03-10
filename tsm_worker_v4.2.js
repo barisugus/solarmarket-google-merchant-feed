@@ -68,6 +68,22 @@ const GONE_PRODUCT_410 = new Set([
   'katlanir-gunes-paneli-arclk-fsp-40w',
 ]);
 
+// ─── v4.2 Icerik Numeric ID → SEF URL Redirect Map ───
+const ICERIK_SEF_MAP = {
+  '41': 'hakkimizda',
+  '44': 'fronius-inverter-karsilastirma-primo-symo-verto-2026',
+  '45': 'hibrit-inverter-nedir-on-grid-off-grid-karsilastirma-2026',
+  '46': 'on-grid-inverter-nedir-mppt-verimlilik-secim-rehberi-2026',
+  '47': 'byd-lityum-batarya-rehberi-hvs-hvm-lv-flex-karsilastirma-2026',
+  '48': 'ev-icin-gunes-paneli-sistemi-maliyet-hesaplama-tasarruf-rehberi-2026',
+  '49': 'elektrikli-arac-sarj-istasyonu-rehberi-ac-dc-sarj-farklari-2026',
+  '50': 'ges-kurulum-sureci-lisanssiz-gunes-enerjisi-santrali-adim-adim-rehber-2026',
+  '51': 'solar-panel-yatirim-geri-donus-suresi-hesaplama-roi-rehberi-2026',
+  '52': 'gunes-enerjisi-mevzuati-tesvikler-2026-guncel-rehber',
+  '53': 'solar-panel-bakim-temizlik-rehberi-verim-kaybini-onleyin-2026',
+  '54': 'blog',
+};
+
 // ─── v4.1 Product Canonical Map (416 entries) ───
 // Maps product slug (last URL segment) → canonical full path
 // Generated from DB: each product gets ONE canonical URL (brand subcategory preferred)
@@ -880,7 +896,23 @@ async function handleRequest(request) {
     }
   }
 
-  // 5c. /markaurunleri/{brand-sef}/ → 410 GONE (v4.2)
+  // 5c. /Icerik/Goster/{numericID} → 301 SEF URL (v4.2)
+  // DLL numeric ID ile 500 veriyor, SEF URL ile çalışıyor
+  if (pathname.startsWith('/Icerik/Goster/')) {
+    const segment = pathname.replace('/Icerik/Goster/', '').replace(/\/+$/, '');
+    const sefUrl = ICERIK_SEF_MAP[segment];
+    if (sefUrl) {
+      return new Response(null, {
+        status: 301,
+        headers: {
+          'Location': `https://www.turkiyesolarmarket.com.tr/Icerik/Goster/${sefUrl}`,
+          'x-tsm-worker': 'icerik-sef-redirect',
+        },
+      });
+    }
+  }
+
+  // 5d. /markaurunleri/{brand-sef}/ → 410 GONE (v4.2)
   // DLL Int32 markaID bekliyor, SEF URL string alınca 500 veriyor
   // Doğru format: /markaurunleri/{numericID}/ — SEF varyantları artık kullanılmıyor
   if (pathname.startsWith('/markaurunleri/')) {
