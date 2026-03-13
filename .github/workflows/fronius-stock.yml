@@ -26,6 +26,8 @@ jobs:
       - name: Run stock tracker
         env:
           SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
+          FILEBOX_SHARE_TOKEN: ${{ secrets.FILEBOX_SHARE_TOKEN }}
+          FILEBOX_PASSWORD: ${{ secrets.FILEBOX_PASSWORD }}
         run: python fronius-stock/fronius_stock_tracker.py
 
       - name: Commit updated stock data

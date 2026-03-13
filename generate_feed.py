@@ -327,6 +327,10 @@ def main():
 
     products.sort(key=lambda p: p["title"])
 
+    if len(products) < 10:
+        print(f"\nERROR: Too few products scraped ({len(products)}), feed not saved")
+        sys.exit(1)
+
     print(f"\nGenerating feed with {len(products)} products...")
     xml_content = generate_feed(products)
 
@@ -345,10 +349,6 @@ def main():
     print(f"Total products: {len(products)}")
     print(f"Errors/skipped: {errors}")
     print(f"Brands: {', '.join(f'{b}({c})' for b, c in sorted(brands.items(), key=lambda x: -x[1])[:5])}")
-
-    if len(products) < 10:
-        print("ERROR: Too few products scraped, feed not saved")
-        sys.exit(1)
 
 
 if __name__ == "__main__":
