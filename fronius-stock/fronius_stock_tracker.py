@@ -11,6 +11,7 @@ Usage:
 
 import json
 import os
+import re
 import sys
 import tempfile
 import zipfile
@@ -34,6 +35,16 @@ if not SENDGRID_API_KEY:
 EMAIL_FROM = "Turkiye Solar Market <support@keywork.ai>"
 EMAIL_TO = "destek@turkiyesolarmarket.com.tr"
 
+# Name aliases: map old/variant names → canonical name
+# When Fronius renames a product in their Excel, add the mapping here
+# so the tracker treats it as the same product (not disappear+appear)
+NAME_ALIASES = {
+    # Fronius price list says "33.3", stock Excel says "33.0"
+    # If stock Excel switches to "33.3", map back to canonical "33.0"
+    "Verto 33.3 SPD 1+2": "Verto 33.0 SPD 1+2",
+    "Verto 33.3 Plus SPD 1+2": "Verto 33.0 Plus SPD 1+2",
+}
+
 
 def download_stock_excel():
     """Download stock Excel from Fronius Filebox via Nextcloud auth."""
@@ -51,7 +62,6 @@ def download_stock_excel():
     resp = opener.open(req)
     html = resp.read().decode("utf-8")
 
-    import re
     m = re.search(r'data-requesttoken="([^"]+)"', html)
     if not m:
         raise RuntimeError("Could not find requesttoken on Filebox auth page")
@@ -89,6 +99,12 @@ def download_stock_excel():
     return excel_path
 
 
+def normalize_name(name):
+    """Normalize product name: collapse whitespace, apply aliases."""
+    name = re.sub(r'\s+', ' ', str(name).strip())
+    return NAME_ALIASES.get(name, name)
+
+
 def parse_stock_excel(path):
     """Parse Fronius stock Excel. Returns dict {product_name: quantity}."""
     wb = openpyxl.load_workbook(path)
@@ -98,7 +114,7 @@ def parse_stock_excel(path):
         name = row[0]
         qty = row[1]
         if name and qty is not None:
-            stock[str(name).strip()] = int(qty)
+            stock[normalize_name(name)] = int(qty)
     return stock
 
 
@@ -106,7 +122,12 @@ def load_previous_stock():
     """Load previous stock from JSON file."""
     if DATA_FILE.exists():
         data = json.loads(DATA_FILE.read_text("utf-8"))
-        return data.get("stock", {}), data.get("date", "bilinmiyor")
+        raw = data.get("stock", {})
+        # Re-normalize old keys to match current normalization
+        stock = {}
+        for k, v in raw.items():
+            stock[normalize_name(k)] = v
+        return stock, data.get("date", "bilinmiyor")
     return None, None
 
 
