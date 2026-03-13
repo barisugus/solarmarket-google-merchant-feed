@@ -23,6 +23,67 @@ USER_AGENT = "Mozilla/5.0 (compatible; TSM-FeedBot/1.0)"
 MAX_WORKERS = 10
 OUTPUT_FILE = "merchant-feed.xml"
 
+# GTIN-13 (EAN) lookup by URL slug suffix
+# Sources: mg-solar-shop.com, efectosolar.es, eibabo.us (verified Mar 2026)
+GTIN_MAP = {
+    # ── Fronius Primo GEN24 ──
+    "fronius-primo-gen24-30": "9007947330376",
+    "fronius-primo-gen24-36": "9007947330390",
+    "fronius-primo-gen24-40": "9007947330406",
+    "fronius-primo-gen24-46": "9007947330420",
+    "fronius-primo-gen24-50": "9007947330444",
+    "fronius-primo-gen24-60": "9007947330468",
+    "fronius-primo-gen24-80": "9007947330475",
+    "fronius-primo-gen24-100": "9007947412478",
+    "fronius-primo-gen24-30-plus": "9007947330383",
+    "fronius-primo-gen24-36-plus": "9007947330413",
+    "fronius-primo-gen24-40-plus": "9007947330437",
+    "fronius-primo-gen24-46-plus": "9007947330451",
+    "fronius-primo-gen24-50-plus": "9007947330550",
+    "fronius-primo-gen24-60-plus": "9007947330567",
+    "fronius-primo-gen24-80-plus": "9007947330574",
+    "fronius-primo-gen24-100-plus": "9007947412485",
+    # ── Fronius Symo GEN24 ──
+    "fronius-symo-gen24-30": "9007947330604",
+    "fronius-symo-gen24-40": "9007947330628",
+    "fronius-symo-gen24-50": "9007947330642",
+    "fronius-symo-gen24-60": "9007947330666",
+    "fronius-symo-gen24-80": "9007947330772",
+    "fronius-symo-gen24-100": "9007947330796",
+    "fronius-symo-gen24-120-sc": "9007947412607",
+    "fronius-symo-gen24-3-0": "9007947330611",  # 3.0 Plus (old SKU)
+    "fronius-symo-gen24-5-0-plus": "9007947330666",
+    "fronius-symo-gen24-10-0-plus": "9007947330802",
+    "fronius-gen24-120-plus-sc": "9007947412614",
+    # ── Fronius Verto ──
+    "fronius-verto-150-spd-12": "9007947628237",
+    "fronius-verto-175-spd-12": "9007947628251",
+    "fronius-verto-200-spd-12": "9007947628275",
+    "fronius-verto-250-spd-12": "9007947628312",
+    "fronius-verto-150-plus-spd-12": "9007947658418",
+    "fronius-verto-200-plus-spd-12": "9007947658432",
+    "fronius-verto-250-plus-spd-12": "9007947658456",
+    "fronius-verto-300-plus-spd-12": "9007947658470",
+    "fronius-verto-333-plus-spd-12": "9007947658494",
+    # ── Fronius Accessories ──
+    "fronius-smart-meter-ip": "9007947561848",
+    "fronius-ohmpilot-903-ohmpilot": "9007947551887",
+    "fronius-wattpilot-flex-home-22-c6": "9007947661432",
+    "fronius-wattpilot-flex-pro-22-c6e": "9007947661449",
+    # ── BYD Battery-Box Premium HVS ──
+    "byd-battery-box-premium-hvs-51": "4262431422110",
+    "byd-battery-box-premium-hvs-77": "4262431422127",
+    "byd-battery-box-premium-hvs-102": "4262431422097",
+    "byd-battery-box-premium-hvs-128": "4262431422103",
+    # ── BYD Battery-Box Premium HVM ──
+    "byd-battery-box-premium-hvm-83": "4262431422073",
+    "byd-battery-box-premium-hvm-11": "4262431422028",
+    "byd-battery-box-premium-hvm-138": "4262431422035",
+    "byd-battery-box-premium-hvm-166": "4262431422042",
+    "byd-battery-box-premium-hvm-193": "4262431422059",
+    "byd-battery-box-premium-hvm-221": "4262431422066",
+}
+
 
 def fetch_url(url, retries=2):
     for attempt in range(retries + 1):
@@ -132,6 +193,11 @@ def scrape_product(url):
     if not product["id"]:
         slug = url.rstrip("/").split("/")[-1]
         product["id"] = slug
+
+    # GTIN lookup from hardcoded map (Fronius/BYD EAN codes)
+    if not product["gtin"]:
+        url_slug = url.rstrip("/").split("/")[-1]
+        product["gtin"] = GTIN_MAP.get(url_slug, "")
 
     if len(product["id"]) > 50:
         h = hashlib.md5(product["id"].encode()).hexdigest()[:8]
