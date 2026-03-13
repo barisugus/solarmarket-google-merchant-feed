@@ -16,7 +16,7 @@ import sys
 import tempfile
 import zipfile
 from datetime import datetime
-from glob import glob
+from html import escape as html_escape
 from pathlib import Path
 from urllib.request import Request, urlopen
 
@@ -24,13 +24,17 @@ import openpyxl
 
 SCRIPT_DIR = Path(__file__).parent
 DATA_FILE = SCRIPT_DIR / "previous_stock.json"
-FILEBOX_SHARE_TOKEN = "jQPg72Ljk43MsmE"
-FILEBOX_PASSWORD = "Fronius2026."
+FILEBOX_SHARE_TOKEN = os.environ.get("FILEBOX_SHARE_TOKEN", "")
+FILEBOX_PASSWORD = os.environ.get("FILEBOX_PASSWORD", "")
 FILEBOX_BASE = "https://filebox.fronius.com"
+HTTP_TIMEOUT = 30
 
 SENDGRID_API_KEY = os.environ.get("SENDGRID_API_KEY", "")
 if not SENDGRID_API_KEY:
     print("ERROR: SENDGRID_API_KEY environment variable is required")
+    sys.exit(1)
+if not FILEBOX_SHARE_TOKEN or not FILEBOX_PASSWORD:
+    print("ERROR: FILEBOX_SHARE_TOKEN and FILEBOX_PASSWORD environment variables are required")
     sys.exit(1)
 EMAIL_FROM = "Turkiye Solar Market <support@keywork.ai>"
 EMAIL_TO = "destek@turkiyesolarmarket.com.tr"
@@ -50,16 +54,15 @@ def download_stock_excel():
     """Download stock Excel from Fronius Filebox via Nextcloud auth."""
     import http.cookiejar
     from urllib.parse import urlencode
+    from urllib.request import build_opener, HTTPCookieProcessor
 
     cj = http.cookiejar.CookieJar()
-    opener = __import__("urllib.request", fromlist=["build_opener"]).build_opener(
-        __import__("urllib.request", fromlist=["HTTPCookieProcessor"]).HTTPCookieProcessor(cj)
-    )
+    opener = build_opener(HTTPCookieProcessor(cj))
 
     # Step 1: Get auth page + CSRF token
     auth_url = f"{FILEBOX_BASE}/s/{FILEBOX_SHARE_TOKEN}"
     req = Request(auth_url)
-    resp = opener.open(req)
+    resp = opener.open(req, timeout=HTTP_TIMEOUT)
     html = resp.read().decode("utf-8")
 
     m = re.search(r'data-requesttoken="([^"]+)"', html)
@@ -74,13 +77,13 @@ def download_stock_excel():
         "sharingToken": FILEBOX_SHARE_TOKEN,
     }).encode()
     req = Request(auth_post_url, data=data, headers={"requesttoken": token})
-    resp = opener.open(req)
+    resp = opener.open(req, timeout=HTTP_TIMEOUT)
 
     # Step 3: Download ZIP
     dl_url = f"{FILEBOX_BASE}/s/{FILEBOX_SHARE_TOKEN}/download"
     req = Request(dl_url)
     with tempfile.NamedTemporaryFile(suffix=".zip", delete=False) as tmp:
-        resp = opener.open(req)
+        resp = opener.open(req, timeout=HTTP_TIMEOUT)
         tmp.write(resp.read())
         zip_path = tmp.name
 
@@ -114,7 +117,10 @@ def parse_stock_excel(path):
         name = row[0]
         qty = row[1]
         if name and qty is not None:
-            stock[normalize_name(name)] = int(qty)
+            try:
+                stock[normalize_name(name)] = int(float(qty))
+            except (ValueError, TypeError):
+                continue
     return stock
 
 
@@ -290,7 +296,7 @@ def send_email(subject, html_body):
     )
 
     try:
-        resp = urlopen(req)
+        resp = urlopen(req, timeout=HTTP_TIMEOUT)
         print(f"Email sent: HTTP {resp.status}")
     except Exception as e:
         print(f"Email send failed: {e}")
