@@ -226,7 +226,7 @@ def build_email_html(current, previous, prev_date, excel_filename):
                 badge = f'<span style="color:#c0392b;">{diff}</span>'
             html += f"""
   <tr style="border-bottom: 1px solid #eee;">
-    <td style="padding: 6px 8px;">{name}</td>
+    <td style="padding: 6px 8px;">{html_escape(name)}</td>
     <td style="padding: 6px 8px; text-align: center;">{prev_qty}</td>
     <td style="padding: 6px 8px; text-align: center;">{cur_qty}</td>
     <td style="padding: 6px 8px; text-align: center;">{badge}</td>
@@ -244,7 +244,7 @@ def build_email_html(current, previous, prev_date, excel_filename):
     for name, qty, _ in in_stock:
         html += f"""
   <tr style="border-bottom: 1px solid #eee;">
-    <td style="padding: 6px 8px;">{name}</td>
+    <td style="padding: 6px 8px;">{html_escape(name)}</td>
     <td style="padding: 6px 8px; text-align: center; font-weight: bold; color: #1e8449;">{qty}</td>
   </tr>"""
     html += "</table>"
@@ -260,7 +260,7 @@ def build_email_html(current, previous, prev_date, excel_filename):
     for name, qty, _ in out_of_stock:
         html += f"""
   <tr style="border-bottom: 1px solid #eee;">
-    <td style="padding: 6px 8px;">{name}</td>
+    <td style="padding: 6px 8px;">{html_escape(name)}</td>
     <td style="padding: 6px 8px; text-align: center; color: #c0392b;">0</td>
   </tr>"""
     html += "</table>"
