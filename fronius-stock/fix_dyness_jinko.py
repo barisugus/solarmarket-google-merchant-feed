@@ -6,11 +6,16 @@
 4. UPDATE 5 Jinko product prices
 """
 import pymssql
+import os
+from dotenv import load_dotenv
+from pathlib import Path
 
-DB_SERVER = '37.148.209.147'
-DB_USER = 'REDACTED_DB_USER'
-DB_PASS = 'REDACTED_DB_PASSWORD'
-DB_NAME = 'turkiyeSolarMarketDb'
+load_dotenv(Path(__file__).parent / ".env")
+
+DB_SERVER = os.environ["DB_SERVER"]
+DB_USER = os.environ["DB_USER"]
+DB_PASS = os.environ["DB_PASS"]
+DB_NAME = os.environ["DB_NAME"]
 
 # Dyness products to INSERT
 # Pricing: Liste × 0.60 = ALIS, ALIS × 1.35 = FIYAT1, FIYAT1 × 1.22 = PIYASA

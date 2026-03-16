@@ -1,11 +1,16 @@
 #!/usr/bin/env python3
 """Generate URUNDETAY HTML for 6 Dyness products."""
 import pymssql
+import os
+from dotenv import load_dotenv
+from pathlib import Path
 
-DB_SERVER = '37.148.209.147'
-DB_USER = 'REDACTED_DB_USER'
-DB_PASS = 'REDACTED_DB_PASSWORD'
-DB_NAME = 'turkiyeSolarMarketDb'
+load_dotenv(Path(__file__).parent / ".env")
+
+DB_SERVER = os.environ["DB_SERVER"]
+DB_USER = os.environ["DB_USER"]
+DB_PASS = os.environ["DB_PASS"]
+DB_NAME = os.environ["DB_NAME"]
 
 PRODUCTS = {
     1814: {

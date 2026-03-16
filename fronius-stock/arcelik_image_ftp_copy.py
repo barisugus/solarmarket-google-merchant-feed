@@ -15,10 +15,16 @@ import sys
 import argparse
 from ftplib import FTP
 
-# Config
-FTP_HOST = "37.148.209.147"
-FTP_USER = "REDACTED_FTP_USER"
-FTP_PASS = "REDACTED_FTP_PASSWORD_2"
+# Config — credentials from .env
+import os
+from dotenv import load_dotenv
+from pathlib import Path
+
+load_dotenv(Path(__file__).parent / ".env")
+
+FTP_HOST = os.environ["FTP_HOST"]
+FTP_USER = os.environ["FTP_USER"]
+FTP_PASS = os.environ["FTP_PASS"]
 BASE_PATH = "/httpdocs/epanel/upl"
 
 SOURCE_ID = 1453

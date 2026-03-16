@@ -16,6 +16,7 @@
  *   v4.0  — FIX: bypass paths (/epanel, /sepet vb.) trailing slash redirect loop düzeltmesi
  *   v4.1  — CANONICAL: product-level canonical map (416 ürün) — çoklu kategori URL'leri için tek canonical
  *   v4.2  — 5xx FIX: /kategori/{sef}→/kategori/0/{sef} 301, origin 500→404 (/urunler/), /markaurunleri/ SEF→410, Icerik kaldırıldı (blog sayfaları)
+ *   v4.3b — GSC 404 fix: 3 slug 301 redirect (symo-gen24-80/100-plus, EV şarj kablosu yanlış kategori)
  */
 
 // ─── D-Kategori Redirect Map (v3.4 + v3.9) ───
@@ -37,6 +38,10 @@ const REDIRECT_301 = {
   // v3.9 — Eski inverterler → ARC versiyonuna yönlendir (SEO link juice korunur)
   'arcelik-inv-15kt': '/urunler/inverter-markalari/arcelik/arcelik-inv-15kt-arc',
   'arcelik-inv-30kt': '/urunler/inverter-markalari/arcelik/arcelik-inv-30kt-arc',
+  // v4.3 — GSC 404 fix: eski/yanlış-kategori slug'lar → doğru canonical URL'ye 301
+  'symo-gen24-80-plus': '/urunler/inverter-markalari/fronius/fronius-symo-gen24-8-0-plus',
+  'symo-gen24-100-plus': '/urunler/inverter-markalari/fronius/fronius-symo-gen24-10-0-plus',
+  '32-a--22kw-3-fazli-elektrikli-arac-sarj-kablosu-tip-2--disi--erkek': '/urunler/elektrikli-arac-sarj-cihazi/32-a--22kw-3-fazli-elektrikli-arac-sarj-kablosu-tip-2--disi--erkek',
 };
 
 // ─── v3.4 GONE products (single-segment, full-path match) ───

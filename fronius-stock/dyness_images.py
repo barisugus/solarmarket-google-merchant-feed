@@ -10,14 +10,18 @@ import os
 import pymssql
 from urllib.request import Request, urlopen
 from PIL import Image
+from dotenv import load_dotenv
+from pathlib import Path
 
-DB_SERVER = '37.148.209.147'
-DB_USER = 'REDACTED_DB_USER'
-DB_PASS = 'REDACTED_DB_PASSWORD'
-DB_NAME = 'turkiyeSolarMarketDb'
-FTP_HOST = '37.148.209.147'
-FTP_USER = 'REDACTED_FTP_USER'
-FTP_PASS = 'REDACTED_FTP_PASSWORD_1'
+load_dotenv(Path(__file__).parent / ".env")
+
+DB_SERVER = os.environ["DB_SERVER"]
+DB_USER = os.environ["DB_USER"]
+DB_PASS = os.environ["DB_PASS"]
+DB_NAME = os.environ["DB_NAME"]
+FTP_HOST = os.environ["FTP_HOST"]
+FTP_USER = os.environ["FTP_USER"]
+FTP_PASS = os.environ["FTP_PASS"]
 
 # Product ID → image URL + alt text + filename
 PRODUCTS = {

@@ -2,10 +2,15 @@
 """Upload updated sitemap to FTP."""
 import ftplib
 import io
+import os
+from dotenv import load_dotenv
+from pathlib import Path
 
-FTP_HOST = '37.148.209.147'
-FTP_USER = 'REDACTED_FTP_USER'
-FTP_PASS = 'REDACTED_FTP_PASSWORD_1'
+load_dotenv(Path(__file__).parent / ".env")
+
+FTP_HOST = os.environ["FTP_HOST"]
+FTP_USER = os.environ["FTP_USER"]
+FTP_PASS = os.environ["FTP_PASS"]
 
 def main():
     ftp = ftplib.FTP(FTP_HOST)
