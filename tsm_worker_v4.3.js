@@ -26,6 +26,8 @@
  *           + PageSpeed: LCP fix (first product img fetchpriority=high, lazy kaldırıldı)
  *           + PageSpeed: CLS fix (product img width/height enjeksiyonu)
  *           + PageSpeed: Homepage cache TTL 300→600s (TTFB iyileştirme)
+ *   v4.4c — FIX: img'ye boyut/oran basma kaldırıldı; CLS fix container CSS ile (.box-product .image min-height)
+ *           + Search: per-isolate limiter kaldırıldı (WAF'a bırakıldı), sadece pass-through
  */
 
 // ─── LAST-SEGMENT Redirect Map (v3.4 + v3.9) ───
@@ -758,10 +760,10 @@ class RecaptchaHandler {
   }
 }
 
-// ─── v3.6+v4.4 PageSpeed: Image optimization ───
-// - LCP candidate: remove lazy, add fetchpriority="high", width/height
-// - All product images: add width/height for CLS prevention
-// - Below-fold images: add loading="lazy"
+// ─── v4.4c PageSpeed: Image + CLS optimization ───
+// LCP: sadece homepage ilk big_ görsele eager + fetchpriority
+// CLS: container CSS ile sabit slot — img'ye oran/boyut basma
+// Lazy: below-fold görsellere loading=lazy
 class ImgHandler {
   constructor(isHomepage) {
     this.count = 0;
@@ -773,56 +775,49 @@ class ImgHandler {
     this.count++;
     const src = el.getAttribute('src') || el.getAttribute('data-src') || '';
 
-    // v4.4: Logo fix — remove lazyload class, ensure src is set
-    if (src.includes('logo.png') || (el.getAttribute('class') || '').includes('lazyload')) {
+    // Logo: data-src → src (eager load)
+    if (src.includes('logo.png')) {
       const dataSrc = el.getAttribute('data-src');
       if (dataSrc && !el.getAttribute('src')) {
         el.setAttribute('src', dataSrc);
       }
     }
 
-    // v4.4: Product images — add width/height for CLS prevention
-    if (src.includes('/epanel/upl/') && src.includes('big_')) {
-      if (!el.getAttribute('width')) { el.setAttribute('width', '600'); }
-      if (!el.getAttribute('height')) { el.setAttribute('height', '552'); }
-
-      // v4.4: First product image on homepage = LCP candidate
-      if (this.isHomepage && !this.lcpHandled) {
-        this.lcpHandled = true;
-        el.setAttribute('loading', 'eager');  // override lazy → eager for LCP
-        el.setAttribute('fetchpriority', 'high');
-        return; // don't re-add lazy to LCP
-      }
-    }
-
-    // Thumb images — smaller dimensions
-    if (src.includes('/epanel/upl/') && src.includes('thumb_')) {
-      if (!el.getAttribute('width')) { el.setAttribute('width', '200'); }
-      if (!el.getAttribute('height')) { el.setAttribute('height', '184'); }
+    // Homepage LCP: ilk big_ görsele eager + high priority
+    if (this.isHomepage && !this.lcpHandled && src.includes('/epanel/upl/') && src.includes('big_')) {
+      this.lcpHandled = true;
+      el.setAttribute('loading', 'eager');
+      el.setAttribute('fetchpriority', 'high');
+      return;
     }
 
     // Already has loading attribute — skip
     if (el.getAttribute('loading')) { return; }
 
-    // Add lazy to everything except first 2 images (logo + LCP)
+    // Below-fold: lazy load (skip first 2 — logo + LCP)
     if (this.count > 2) {
       el.setAttribute('loading', 'lazy');
     }
   }
 }
 
-// ─── v4.4: Homepage LCP preload injection ───
-class HomepageLcpPreloadHandler {
-  constructor(isHomepage) {
-    this.isHomepage = isHomepage;
+// ─── v4.4c: CLS fix — container-level fixed slot via CSS ───
+// img'ye boyut basma; container'a min-height + flex + object-fit ver
+class ClsStyleHandler {
+  constructor() {
     this.injected = false;
   }
 
   element(el) {
-    if (!this.isHomepage || this.injected) { return; }
+    if (this.injected) { return; }
     this.injected = true;
-    // Preload will be injected after preconnect hints
-    // The first big_ product image is the LCP candidate
+    el.append(
+      '<style>' +
+      '.box-product .image{min-height:260px;display:flex;align-items:center;justify-content:center}' +
+      '.box-product .image img{max-width:100%;max-height:260px;height:auto;object-fit:contain}' +
+      '</style>',
+      { html: true }
+    );
   }
 }
 
@@ -894,9 +889,9 @@ async function handleRequest(request) {
     });
   }
 
-  // 3. /arama — bypass cache, origin'e geçir (rate limit kaldırıldı v4.4)
-  // v3.2'deki in-memory Map rate limit güvenilir değildi (per-isolate, false positive)
-  // Gerçek koruma: CF WAF/Bot Management tarafında yapılmalı
+  // 3. /arama — no cache, pass to origin (v4.4c)
+  // Rate limit: WAF/Bot Management katmanına bırakıldı
+  // In-memory Map per-isolate güvenilir değil (false positive riski)
   if (pathname.startsWith('/arama')) {
     return fetch(request);
   }
@@ -1038,7 +1033,7 @@ async function handleRequest(request) {
     const canonicalHandler = new CanonicalHandler(canonicalUrl);
     const headHandler = new HeadHandler(canonicalUrl, canonicalHandler);
 
-    // v3.6+v4.4 PageSpeed handlers
+    // v3.6+v4.4c PageSpeed handlers
     const isHomepage = pathname === '/' || pathname === '';
     const preconnectHandler = new HeadPreconnectHandler();
     const cssAsyncHandler = new CssAsyncHandler();
@@ -1047,6 +1042,7 @@ async function handleRequest(request) {
     const scriptDeferHandler = new ScriptDeferHandler();
     const recaptchaHandler = new RecaptchaHandler(pathname);
     const imgHandler = new ImgHandler(isHomepage);
+    const clsStyleHandler = new ClsStyleHandler();
 
     const transformed = new HTMLRewriter()
       // Existing: canonical
@@ -1064,7 +1060,9 @@ async function handleRequest(request) {
       .on('script[src]', scriptDeferHandler)
       // v3.6: reCAPTCHA removal on non-form pages
       .on('script[src]', recaptchaHandler)
-      // v3.6+v4.4: Image optimization (lazy + LCP + CLS fix)
+      // v4.4c: CLS fix — container-level CSS slot
+      .on('head', clsStyleHandler)
+      // v4.4c: Image optimization (lazy + LCP)
       .on('img', imgHandler)
       .transform(new Response(response.body, {
         status: response.status,
