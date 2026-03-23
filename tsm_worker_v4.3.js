@@ -905,12 +905,8 @@ async function handleRequest(request) {
     });
   }
 
-  // 3. /arama — no cache, pass to origin (v4.4c)
-  // Rate limit: WAF/Bot Management katmanına bırakıldı
-  // In-memory Map per-isolate güvenilir değil (false positive riski)
-  if (pathname.startsWith('/arama')) {
-    return fetch(request);
-  }
+  // 3. /arama — v4.5b: early return kaldırıldı, HTMLRewriter'dan geçsin (logo fix için)
+  // Cache bypass aşağıdaki fetch logic'te handle ediliyor
 
   // 4. /merchant-feed.xml + /sitemap_new.xml → GitHub raw proxy (1h cache)
   if (pathname === '/merchant-feed.xml' || pathname === '/sitemap_new.xml') {
@@ -1007,9 +1003,12 @@ async function handleRequest(request) {
 
   // 6. Fetch from origin with edge cache
   const isHomepage = pathname === '/' || pathname === '';
-  const cacheOpts = isHomepage
-    ? { cacheEverything: true, cacheTtl: 1800 }  // v4.4c: homepage 30min cache
-    : { cacheEverything: true, cacheTtl: 300 };
+  const isSearch = pathname.startsWith('/arama');
+  const cacheOpts = isSearch
+    ? {}  // v4.5b: arama cache'lenmez ama HTMLRewriter'dan geçer (logo fix)
+    : isHomepage
+      ? { cacheEverything: true, cacheTtl: 1800 }
+      : { cacheEverything: true, cacheTtl: 300 };
   const response = await fetch(request, { cf: cacheOpts });
 
   // 7. v4.2: Origin 500 → 404 for /urunler/ (non-existent product slugs)
