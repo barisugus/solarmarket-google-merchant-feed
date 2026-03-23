@@ -30,6 +30,8 @@
  *           + Search: per-isolate limiter kaldırıldı (WAF'a bırakıldı), sadece pass-through
  *   v4.5  — LCP preload: homepage ilk big_ görselin hemen önüne <link rel="preload" as="image"> enjekte
  *           + Homepage cache TTL 1800s (TTFB fix)
+ *   v4.5b — Logo fix: origin DLL anasayfa dışında data-src boş gönderiyor
+ *           .header-logo img selector ile container-level fix (global img handler'dan bağımsız)
  */
 
 // ─── LAST-SEGMENT Redirect Map (v3.4 + v3.9) ───
@@ -762,6 +764,22 @@ class RecaptchaHandler {
   }
 }
 
+// ─── v4.5b: Logo fix — container-level selector ───
+// Origin DLL anasayfa dışında data-src boş gönderiyor
+// .header-logo img selector'ı ile sadece logo hedeflenir
+class LogoHandler {
+  element(el) {
+    const src = el.getAttribute('src');
+    const dataSrc = el.getAttribute('data-src');
+
+    // src yoksa veya boşsa → logo path'i set et
+    if (!src || src === '') {
+      const logoPath = (dataSrc && dataSrc !== '') ? dataSrc : '/assets/images/logo.png';
+      el.setAttribute('src', logoPath);
+    }
+  }
+}
+
 // ─── v4.4c+v4.5 PageSpeed: Image + LCP preload ───
 // LCP: homepage ilk big_ görsele eager + fetchpriority + preload
 // Lazy: below-fold görsellere loading=lazy
@@ -777,13 +795,7 @@ class ImgHandler {
     this.count++;
     const src = el.getAttribute('src') || el.getAttribute('data-src') || '';
 
-    // Logo: data-src → src (eager load)
-    if (src.includes('logo.png')) {
-      const dataSrc = el.getAttribute('data-src');
-      if (dataSrc && !el.getAttribute('src')) {
-        el.setAttribute('src', dataSrc);
-      }
-    }
+    // Logo: handled by LogoHandler (.header-logo img selector)
 
     // Homepage LCP: ilk big_ görsele eager + high priority + preload hint
     if (this.isHomepage && !this.lcpHandled && src.includes('/epanel/upl/') && src.includes('big_')) {
@@ -1065,6 +1077,8 @@ async function handleRequest(request) {
       .on('script[src]', recaptchaHandler)
       // v4.4c: CLS fix — container-level CSS slot
       .on('head', clsStyleHandler)
+      // v4.5b: Logo fix — container-level, sadece .header-logo içindeki img
+      .on('.header-logo img', new LogoHandler())
       // v4.4c: Image optimization (lazy + LCP)
       .on('img', imgHandler)
       .transform(new Response(response.body, {
