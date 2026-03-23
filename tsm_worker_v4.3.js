@@ -28,6 +28,8 @@
  *           + PageSpeed: Homepage cache TTL 300→600s (TTFB iyileştirme)
  *   v4.4c — FIX: img'ye boyut/oran basma kaldırıldı; CLS fix container CSS ile (.box-product .image min-height)
  *           + Search: per-isolate limiter kaldırıldı (WAF'a bırakıldı), sadece pass-through
+ *   v4.5  — LCP preload: homepage ilk big_ görselin hemen önüne <link rel="preload" as="image"> enjekte
+ *           + Homepage cache TTL 1800s (TTFB fix)
  */
 
 // ─── LAST-SEGMENT Redirect Map (v3.4 + v3.9) ───
@@ -760,15 +762,15 @@ class RecaptchaHandler {
   }
 }
 
-// ─── v4.4c PageSpeed: Image + CLS optimization ───
-// LCP: sadece homepage ilk big_ görsele eager + fetchpriority
-// CLS: container CSS ile sabit slot — img'ye oran/boyut basma
+// ─── v4.4c+v4.5 PageSpeed: Image + LCP preload ───
+// LCP: homepage ilk big_ görsele eager + fetchpriority + preload
 // Lazy: below-fold görsellere loading=lazy
 class ImgHandler {
-  constructor(isHomepage) {
+  constructor(isHomepage, lcpPreloadHandler) {
     this.count = 0;
     this.isHomepage = isHomepage;
     this.lcpHandled = false;
+    this.lcpPreloadHandler = lcpPreloadHandler;
   }
 
   element(el) {
@@ -783,11 +785,13 @@ class ImgHandler {
       }
     }
 
-    // Homepage LCP: ilk big_ görsele eager + high priority
+    // Homepage LCP: ilk big_ görsele eager + high priority + preload hint
     if (this.isHomepage && !this.lcpHandled && src.includes('/epanel/upl/') && src.includes('big_')) {
       this.lcpHandled = true;
       el.setAttribute('loading', 'eager');
       el.setAttribute('fetchpriority', 'high');
+      // Preload: img'nin hemen önüne <link rel="preload"> enjekte et
+      el.before(`<link rel="preload" as="image" href="${src}">`, { html: true });
       return;
     }
 
@@ -990,12 +994,11 @@ async function handleRequest(request) {
 
 
   // 6. Fetch from origin with edge cache
-  // v4.4: Homepage gets longer TTL (10min) for better TTFB
   const isHomepage = pathname === '/' || pathname === '';
-  const cacheTtl = isHomepage ? 600 : 300;
-  const response = await fetch(request, {
-    cf: { cacheEverything: true, cacheTtl },
-  });
+  const cacheOpts = isHomepage
+    ? { cacheEverything: true, cacheTtl: 1800 }  // v4.4c: homepage 30min cache
+    : { cacheEverything: true, cacheTtl: 300 };
+  const response = await fetch(request, { cf: cacheOpts });
 
   // 7. v4.2: Origin 500 → 404 for /urunler/ (non-existent product slugs)
   // DLL NullRef yerine temiz 404 döndür — Google index'ten düşürsün
@@ -1041,7 +1044,7 @@ async function handleRequest(request) {
     const fontDisplayHandler = new HeadFontDisplayHandler();
     const scriptDeferHandler = new ScriptDeferHandler();
     const recaptchaHandler = new RecaptchaHandler(pathname);
-    const imgHandler = new ImgHandler(isHomepage);
+    const imgHandler = new ImgHandler(isHomepage, null);
     const clsStyleHandler = new ClsStyleHandler();
 
     const transformed = new HTMLRewriter()
