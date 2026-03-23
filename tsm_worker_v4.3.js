@@ -562,6 +562,25 @@ const BYPASS_PREFIXES = [
   '/admin', '/epanel', '/Account', '/Login',
 ];
 
+// ─── v4.5b: GA4 gtag.js injection ───
+const GA4_ID = 'G-B51YLHYKWT';
+class GtagHandler {
+  constructor() {
+    this.injected = false;
+  }
+
+  element(el) {
+    if (this.injected) { return; }
+    this.injected = true;
+    el.append(
+      `<script async src="https://www.googletagmanager.com/gtag/js?id=${GA4_ID}"></script>` +
+      `<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}` +
+      `gtag('js',new Date());gtag('config','${GA4_ID}');</script>`,
+      { html: true }
+    );
+  }
+}
+
 // ─── Canonical Injection (HTMLRewriter) ───
 class CanonicalHandler {
   constructor(canonicalUrl) {
@@ -1076,6 +1095,8 @@ async function handleRequest(request) {
       .on('script[src]', recaptchaHandler)
       // v4.4c: CLS fix — container-level CSS slot
       .on('head', clsStyleHandler)
+      // v4.5b: GA4 gtag.js injection
+      .on('head', new GtagHandler())
       // v4.5b: Logo fix — container-level, sadece .header-logo içindeki img
       .on('.header-logo img', new LogoHandler())
       // v4.4c: Image optimization (lazy + LCP)
