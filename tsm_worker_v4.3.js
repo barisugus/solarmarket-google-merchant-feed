@@ -23,6 +23,9 @@
  *           + 4 eksik slug GONE_PRODUCT_410'a eklendi (jks10hei, 545-tek-adet, 580w, isotrap)
  *           + EV şarj kablosu regresyon fix: elektrikli-arac-sarj-kablosu prefix'li path eklendi
  *           + /arama rate limit kaldırıldı: in-memory Map per-isolate, güvenilir değil, false positive UX kırıyordu
+ *           + PageSpeed: LCP fix (first product img fetchpriority=high, lazy kaldırıldı)
+ *           + PageSpeed: CLS fix (product img width/height enjeksiyonu)
+ *           + PageSpeed: Homepage cache TTL 300→600s (TTFB iyileştirme)
  */
 
 // ─── LAST-SEGMENT Redirect Map (v3.4 + v3.9) ───
@@ -755,23 +758,71 @@ class RecaptchaHandler {
   }
 }
 
-// ─── v3.6 PageSpeed: Image lazy loading ───
-// Add loading="lazy" to images below the fold
-class ImgLazyHandler {
-  constructor() {
+// ─── v3.6+v4.4 PageSpeed: Image optimization ───
+// - LCP candidate: remove lazy, add fetchpriority="high", width/height
+// - All product images: add width/height for CLS prevention
+// - Below-fold images: add loading="lazy"
+class ImgHandler {
+  constructor(isHomepage) {
     this.count = 0;
+    this.isHomepage = isHomepage;
+    this.lcpHandled = false;
   }
 
   element(el) {
     this.count++;
+    const src = el.getAttribute('src') || el.getAttribute('data-src') || '';
 
-    // Skip first image (likely logo / LCP candidate)
-    if (this.count <= 1) { return; }
+    // v4.4: Logo fix — remove lazyload class, ensure src is set
+    if (src.includes('logo.png') || (el.getAttribute('class') || '').includes('lazyload')) {
+      const dataSrc = el.getAttribute('data-src');
+      if (dataSrc && !el.getAttribute('src')) {
+        el.setAttribute('src', dataSrc);
+      }
+    }
+
+    // v4.4: Product images — add width/height for CLS prevention
+    if (src.includes('/epanel/upl/') && src.includes('big_')) {
+      if (!el.getAttribute('width')) { el.setAttribute('width', '600'); }
+      if (!el.getAttribute('height')) { el.setAttribute('height', '552'); }
+
+      // v4.4: First product image on homepage = LCP candidate
+      if (this.isHomepage && !this.lcpHandled) {
+        this.lcpHandled = true;
+        el.setAttribute('loading', 'eager');  // override lazy → eager for LCP
+        el.setAttribute('fetchpriority', 'high');
+        return; // don't re-add lazy to LCP
+      }
+    }
+
+    // Thumb images — smaller dimensions
+    if (src.includes('/epanel/upl/') && src.includes('thumb_')) {
+      if (!el.getAttribute('width')) { el.setAttribute('width', '200'); }
+      if (!el.getAttribute('height')) { el.setAttribute('height', '184'); }
+    }
 
     // Already has loading attribute — skip
     if (el.getAttribute('loading')) { return; }
 
-    el.setAttribute('loading', 'lazy');
+    // Add lazy to everything except first 2 images (logo + LCP)
+    if (this.count > 2) {
+      el.setAttribute('loading', 'lazy');
+    }
+  }
+}
+
+// ─── v4.4: Homepage LCP preload injection ───
+class HomepageLcpPreloadHandler {
+  constructor(isHomepage) {
+    this.isHomepage = isHomepage;
+    this.injected = false;
+  }
+
+  element(el) {
+    if (!this.isHomepage || this.injected) { return; }
+    this.injected = true;
+    // Preload will be injected after preconnect hints
+    // The first big_ product image is the LCP candidate
   }
 }
 
@@ -944,8 +995,11 @@ async function handleRequest(request) {
 
 
   // 6. Fetch from origin with edge cache
+  // v4.4: Homepage gets longer TTL (10min) for better TTFB
+  const isHomepage = pathname === '/' || pathname === '';
+  const cacheTtl = isHomepage ? 600 : 300;
   const response = await fetch(request, {
-    cf: { cacheEverything: true, cacheTtl: 300 },
+    cf: { cacheEverything: true, cacheTtl },
   });
 
   // 7. v4.2: Origin 500 → 404 for /urunler/ (non-existent product slugs)
@@ -984,14 +1038,15 @@ async function handleRequest(request) {
     const canonicalHandler = new CanonicalHandler(canonicalUrl);
     const headHandler = new HeadHandler(canonicalUrl, canonicalHandler);
 
-    // v3.6 PageSpeed handlers
+    // v3.6+v4.4 PageSpeed handlers
+    const isHomepage = pathname === '/' || pathname === '';
     const preconnectHandler = new HeadPreconnectHandler();
     const cssAsyncHandler = new CssAsyncHandler();
     const fontAwesomeCssHandler = new FontAwesomeCssHandler();
     const fontDisplayHandler = new HeadFontDisplayHandler();
     const scriptDeferHandler = new ScriptDeferHandler();
     const recaptchaHandler = new RecaptchaHandler(pathname);
-    const imgLazyHandler = new ImgLazyHandler();
+    const imgHandler = new ImgHandler(isHomepage);
 
     const transformed = new HTMLRewriter()
       // Existing: canonical
@@ -1009,8 +1064,8 @@ async function handleRequest(request) {
       .on('script[src]', scriptDeferHandler)
       // v3.6: reCAPTCHA removal on non-form pages
       .on('script[src]', recaptchaHandler)
-      // v3.6: Image lazy loading
-      .on('img', imgLazyHandler)
+      // v3.6+v4.4: Image optimization (lazy + LCP + CLS fix)
+      .on('img', imgHandler)
       .transform(new Response(response.body, {
         status: response.status,
         headers: newHeaders,
