@@ -22,6 +22,7 @@
  *           last-segment match sadece source≠target slug'lar için kullanılır (yapısal güvenlik)
  *           + 4 eksik slug GONE_PRODUCT_410'a eklendi (jks10hei, 545-tek-adet, 580w, isotrap)
  *           + EV şarj kablosu regresyon fix: elektrikli-arac-sarj-kablosu prefix'li path eklendi
+ *           + /arama rate limit kaldırıldı: in-memory Map per-isolate, güvenilir değil, false positive UX kırıyordu
  */
 
 // ─── LAST-SEGMENT Redirect Map (v3.4 + v3.9) ───
@@ -552,38 +553,6 @@ const BYPASS_PREFIXES = [
   '/admin', '/epanel', '/Account', '/Login',
 ];
 
-// ─── Rate Limit State ───
-const rateLimitBurst = new Map();
-const rateLimitWindow = new Map();
-const BURST_LIMIT = 10;
-const BURST_WINDOW_MS = 10000;
-const WINDOW_LIMIT = 60;
-const WINDOW_DURATION_MS = 300000;
-
-function isRateLimited(ip) {
-  const now = Date.now();
-
-  // Burst check (10 req / 10s)
-  const burst = rateLimitBurst.get(ip);
-  if (burst && now - burst.start < BURST_WINDOW_MS) {
-    burst.count++;
-    if (burst.count > BURST_LIMIT) { return true; }
-  } else {
-    rateLimitBurst.set(ip, { start: now, count: 1 });
-  }
-
-  // Window check (60 req / 5min)
-  const win = rateLimitWindow.get(ip);
-  if (win && now - win.start < WINDOW_DURATION_MS) {
-    win.count++;
-    if (win.count > WINDOW_LIMIT) { return true; }
-  } else {
-    rateLimitWindow.set(ip, { start: now, count: 1 });
-  }
-
-  return false;
-}
-
 // ─── Canonical Injection (HTMLRewriter) ───
 class CanonicalHandler {
   constructor(canonicalUrl) {
@@ -874,18 +843,10 @@ async function handleRequest(request) {
     });
   }
 
-  // 3. /arama — rate limit + no cache
+  // 3. /arama — bypass cache, origin'e geçir (rate limit kaldırıldı v4.4)
+  // v3.2'deki in-memory Map rate limit güvenilir değildi (per-isolate, false positive)
+  // Gerçek koruma: CF WAF/Bot Management tarafında yapılmalı
   if (pathname.startsWith('/arama')) {
-    const ip = request.headers.get('cf-connecting-ip') || 'unknown';
-    if (isRateLimited(ip)) {
-      return new Response('Rate limited', {
-        status: 429,
-        headers: {
-          'Retry-After': '60',
-          'x-tsm-worker': 'rate-limited',
-        },
-      });
-    }
     return fetch(request);
   }
 
