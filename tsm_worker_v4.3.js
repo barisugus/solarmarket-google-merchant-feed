@@ -20,6 +20,8 @@
  *   v4.3c — GSC 404 fix: 2 Chint 301 redirect + 5 slug 410 GONE (arcelik eski, sun200050ktlm3, tip-2 kablo)
  *   v4.4  — FIX: redirect loop — Chint gibi source/target aynı slug olan redirect'ler full-path map'e taşındı;
  *           last-segment match sadece source≠target slug'lar için kullanılır (yapısal güvenlik)
+ *           + 4 eksik slug GONE_PRODUCT_410'a eklendi (jks10hei, 545-tek-adet, 580w, isotrap)
+ *           + EV şarj kablosu regresyon fix: elektrikli-arac-sarj-kablosu prefix'li path eklendi
  */
 
 // ─── LAST-SEGMENT Redirect Map (v3.4 + v3.9) ───
@@ -53,8 +55,9 @@ const REDIRECT_PATH = {
   // v4.3→v4.4: Chint kategorisiz URL'ler → doğru nested kategori URL'ye
   'chint-power-ech5k-sml-eu-5-kw-tek-fazli-hibrit-inverter': '/urunler/inverter-markalari/chint/chint-power-ech5k-sml-eu-5-kw-tek-fazli-hibrit-inverter',
   'chint-power-ech6k-sml-eu-6-kw-tek-fazli-hibrit-inverter': '/urunler/inverter-markalari/chint/chint-power-ech6k-sml-eu-6-kw-tek-fazli-hibrit-inverter',
-  // v4.3: EV şarj kablosu yanlış kategori → doğru kategori
+  // v4.3→v4.4: EV şarj kablosu yanlış kategori → doğru kategori (tüm bilinen source path'ler)
   '32-a--22kw-3-fazli-elektrikli-arac-sarj-kablosu-tip-2--disi--erkek': '/urunler/elektrikli-arac-sarj-cihazi/32-a--22kw-3-fazli-elektrikli-arac-sarj-kablosu-tip-2--disi--erkek',
+  'elektrikli-arac-sarj-kablosu/32-a--22kw-3-fazli-elektrikli-arac-sarj-kablosu-tip-2--disi--erkek': '/urunler/elektrikli-arac-sarj-cihazi/32-a--22kw-3-fazli-elektrikli-arac-sarj-kablosu-tip-2--disi--erkek',
 };
 
 // ─── v3.4 GONE products (single-segment, full-path match) ───
@@ -90,6 +93,11 @@ const GONE_PRODUCT_410 = new Set([
   'arcelik-solar-panel-545-w-palet',
   'sun200050ktlm3',
   'tip-2-kablo-2-5metre-kablo',
+  // v4.4 — GSC 404 fix (23 Mart): eksik slug'lar
+  'jks10hei-jinko-solar',
+  'arcelik-solar-panel-545-w-palet-tek-adet',
+  'arcelik-580w-solar-panel--palet',
+  'isotrap-mini-trapez--sandvic-cati-montaj-sistemi',
 ]);
 
 // ─── v4.2 Icerik Numeric ID → SEF URL Redirect Map ───
