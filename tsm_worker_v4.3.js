@@ -17,10 +17,14 @@
  *   v4.1  — CANONICAL: product-level canonical map (416 ürün) — çoklu kategori URL'leri için tek canonical
  *   v4.2  — 5xx FIX: /kategori/{sef}→/kategori/0/{sef} 301, origin 500→404 (/urunler/), /markaurunleri/ SEF→410, Icerik kaldırıldı (blog sayfaları)
  *   v4.3b — GSC 404 fix: 3 slug 301 redirect (symo-gen24-80/100-plus, EV şarj kablosu yanlış kategori)
+ *   v4.3c — GSC 404 fix: 2 Chint 301 redirect + 5 slug 410 GONE (arcelik eski, sun200050ktlm3, tip-2 kablo)
+ *   v4.4  — FIX: redirect loop — Chint gibi source/target aynı slug olan redirect'ler full-path map'e taşındı;
+ *           last-segment match sadece source≠target slug'lar için kullanılır (yapısal güvenlik)
  */
 
-// ─── D-Kategori Redirect Map (v3.4 + v3.9) ───
-const REDIRECT_301 = {
+// ─── LAST-SEGMENT Redirect Map (v3.4 + v3.9) ───
+// Source slug ≠ target slug — last-segment matching güvenli
+const REDIRECT_SLUG = {
   'arcelik-crystal-400w-monokristal-gunes-paneli': '/urunler/arcelik-crystal-590w-monokristal-gunes-paneli',
   'arcelik-crystal-410w-monokristal-gunes-paneli': '/urunler/arcelik-crystal-590w-monokristal-gunes-paneli',
   'arcelik-crystal-half-cut-450w-monokristal-gunes-paneli': '/urunler/arcelik-crystal-590w-monokristal-gunes-paneli',
@@ -41,6 +45,15 @@ const REDIRECT_301 = {
   // v4.3 — GSC 404 fix: eski/yanlış-kategori slug'lar → doğru canonical URL'ye 301
   'symo-gen24-80-plus': '/urunler/inverter-markalari/fronius/fronius-symo-gen24-8-0-plus',
   'symo-gen24-100-plus': '/urunler/inverter-markalari/fronius/fronius-symo-gen24-10-0-plus',
+};
+
+// ─── FULL-PATH Redirect Map (v4.4) ───
+// Source slug == target slug (sadece kategori değişiyor) — full-path match ZORUNLU, yoksa loop
+const REDIRECT_PATH = {
+  // v4.3→v4.4: Chint kategorisiz URL'ler → doğru nested kategori URL'ye
+  'chint-power-ech5k-sml-eu-5-kw-tek-fazli-hibrit-inverter': '/urunler/inverter-markalari/chint/chint-power-ech5k-sml-eu-5-kw-tek-fazli-hibrit-inverter',
+  'chint-power-ech6k-sml-eu-6-kw-tek-fazli-hibrit-inverter': '/urunler/inverter-markalari/chint/chint-power-ech6k-sml-eu-6-kw-tek-fazli-hibrit-inverter',
+  // v4.3: EV şarj kablosu yanlış kategori → doğru kategori
   '32-a--22kw-3-fazli-elektrikli-arac-sarj-kablosu-tip-2--disi--erkek': '/urunler/elektrikli-arac-sarj-cihazi/32-a--22kw-3-fazli-elektrikli-arac-sarj-kablosu-tip-2--disi--erkek',
 };
 
@@ -71,6 +84,12 @@ const GONE_PRODUCT_410 = new Set([
   'arclk-fsp-20w',
   'katlanir-gunes-paneli-arclk-fsp-100w',
   'katlanir-gunes-paneli-arclk-fsp-40w',
+  // v4.3c — GSC 404 fix (18 Mart): eski/silinmiş ürünler
+  'arcelik--10-kw--solar-inverter',
+  'arcelik--50-kw--solar-inverter',
+  'arcelik-solar-panel-545-w-palet',
+  'sun200050ktlm3',
+  'tip-2-kablo-2-5metre-kablo',
 ]);
 
 // ─── v4.2 Icerik Numeric ID → SEF URL Redirect Map ───
@@ -897,20 +916,32 @@ async function handleRequest(request) {
       });
     }
 
-    // 5b. 301 Redirect — eski model → yeni model (full slug OR product slug match)
-    const redirectTarget = REDIRECT_301[slug] || REDIRECT_301[productSlug];
-    if (redirectTarget) {
+    // 5b. 301 Redirect — full-path match (aynı slug, farklı kategori — loop riski olan)
+    const fullPathTarget = REDIRECT_PATH[slug];
+    if (fullPathTarget) {
       return new Response(null, {
         status: 301,
         headers: {
-          'Location': `https://www.turkiyesolarmarket.com.tr${redirectTarget}`,
+          'Location': `https://www.turkiyesolarmarket.com.tr${fullPathTarget}`,
+          'x-tsm-worker': 'redirect-path',
+        },
+      });
+    }
+
+    // 5c. 301 Redirect — last-segment match (source≠target slug — loop riski yok)
+    const slugTarget = REDIRECT_SLUG[slug] || REDIRECT_SLUG[productSlug];
+    if (slugTarget) {
+      return new Response(null, {
+        status: 301,
+        headers: {
+          'Location': `https://www.turkiyesolarmarket.com.tr${slugTarget}`,
           'x-tsm-worker': 'redirect-product',
         },
       });
     }
   }
 
-  // 5c. /Icerik/Goster/{numericID} → 301 SEF URL (v4.2)
+  // 5d. /Icerik/Goster/{numericID} → 301 SEF URL (v4.2)
   // DLL numeric ID ile 500 veriyor, SEF URL ile çalışıyor
   if (pathname.startsWith('/Icerik/Goster/')) {
     const segment = pathname.replace('/Icerik/Goster/', '').replace(/\/+$/, '');
