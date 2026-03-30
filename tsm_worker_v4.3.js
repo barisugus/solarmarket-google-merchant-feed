@@ -1016,12 +1016,13 @@ async function handleRequest(request) {
   if (pathname.startsWith('/Icerik/Goster/')) {
     const segment = pathname.replace('/Icerik/Goster/', '').replace(/\/+$/, '');
 
-    // v4.6: /Icerik/Goster/iletisim → /iletisim 301 (GSC'de hâlâ crawl ediliyor)
+    // v4.6: /Icerik/Goster/iletisim → /Icerik/Goster/bize-ulasin 301
+    // /iletisim 404 döner (broken target), gerçek iletişim sayfası bize-ulasin
     if (segment === 'iletisim') {
       return new Response(null, {
         status: 301,
         headers: {
-          'Location': 'https://www.turkiyesolarmarket.com.tr/iletisim',
+          'Location': 'https://www.turkiyesolarmarket.com.tr/Icerik/Goster/bize-ulasin',
           'x-tsm-worker': 'icerik-iletisim-301',
         },
       });
