@@ -1,5 +1,5 @@
 /**
- * TSM Edge Cache Worker v4.3
+ * TSM Edge Cache Worker v4.6
  * turkiyesolarmarket.com.tr
  *
  * Changelog:
@@ -32,6 +32,10 @@
  *           + Homepage cache TTL 1800s (TTFB fix)
  *   v4.5b — Logo fix: origin DLL anasayfa dışında data-src boş gönderiyor
  *           .header-logo img selector ile container-level fix (global img handler'dan bağımsız)
+ *   v4.6  — 5xx GUARD genişletme: /Icerik/Goster/ placeholder+bilinmeyen segment→410,
+ *           /Icerik/Goster/iletisim→301 /iletisim, /arama placeholder query→410,
+ *           /markaurunleri/ SEF→410 + numeric pipeline pass-through, /kategori/ 500→404,
+ *           final safety net: tüm legacy path'lerde origin 500→404/410 dönüşümü
  */
 
 // ─── LAST-SEGMENT Redirect Map (v3.4 + v3.9) ───
@@ -924,8 +928,29 @@ async function handleRequest(request) {
     });
   }
 
-  // 3. /arama — v4.5b: early return kaldırıldı, HTMLRewriter'dan geçsin (logo fix için)
-  // Cache bypass aşağıdaki fetch logic'te handle ediliyor
+  // 3. /arama — v4.6: placeholder query guard + HTMLRewriter pass-through
+  if (pathname.startsWith('/arama')) {
+    const kelime = (url.searchParams.get('kelime') || '').trim();
+    const etiket = (url.searchParams.get('etiket') || '').trim();
+    if (
+      kelime === '{search_term_string}' ||
+      kelime === '${SefUrl}' ||
+      /[{}$]/.test(kelime) ||
+      etiket === '${SefUrl}' ||
+      /[{}$]/.test(etiket)
+    ) {
+      return new Response('Invalid search URL.', {
+        status: 410,
+        headers: {
+          'content-type': 'text/html; charset=utf-8',
+          'cache-control': 'public, max-age=3600',
+          'x-tsm-worker': 'gone-search-placeholder',
+          'x-robots-tag': 'noindex, nofollow',
+        },
+      });
+    }
+  }
+  // /arama cache bypass: aşağıdaki fetch logic'te handle ediliyor
 
   // 4. /merchant-feed.xml + /sitemap_new.xml → GitHub raw proxy (1h cache)
   if (pathname === '/merchant-feed.xml' || pathname === '/sitemap_new.xml') {
@@ -987,10 +1012,22 @@ async function handleRequest(request) {
     }
   }
 
-  // 5d. /Icerik/Goster/{numericID} → 301 SEF URL (v4.2)
-  // DLL numeric ID ile 500 veriyor, SEF URL ile çalışıyor
+  // 5d. /Icerik/Goster/ — legacy CMS path guard (v4.2 + v4.6)
   if (pathname.startsWith('/Icerik/Goster/')) {
     const segment = pathname.replace('/Icerik/Goster/', '').replace(/\/+$/, '');
+
+    // v4.6: /Icerik/Goster/iletisim → /iletisim 301 (GSC'de hâlâ crawl ediliyor)
+    if (segment === 'iletisim') {
+      return new Response(null, {
+        status: 301,
+        headers: {
+          'Location': 'https://www.turkiyesolarmarket.com.tr/iletisim',
+          'x-tsm-worker': 'icerik-iletisim-301',
+        },
+      });
+    }
+
+    // v4.2: numeric ID → SEF URL 301 (mevcut harita)
     const sefUrl = ICERIK_SEF_MAP[segment];
     if (sefUrl) {
       return new Response(null, {
@@ -1001,19 +1038,48 @@ async function handleRequest(request) {
         },
       });
     }
-  }
 
-  // 5d. /markaurunleri/{brand-sef}/ → 410 GONE (v4.2)
-  // DLL Int32 markaID bekliyor, SEF URL string alınca 500 veriyor
-  // Doğru format: /markaurunleri/{numericID}/ — SEF varyantları artık kullanılmıyor
-  if (pathname.startsWith('/markaurunleri/')) {
-    const segment = pathname.replace('/markaurunleri/', '').replace(/\/+$/, '');
-    if (segment && !/^\d+$/.test(segment)) {
+    // v4.6: Placeholder/malformed segments → 410 (${SefUrl}, boş, veya haritada olmayan numeric)
+    if (!segment || /[{}$]/.test(segment) || /^\d+$/.test(segment)) {
       return new Response('This page has been permanently removed.', {
         status: 410,
         headers: {
           'content-type': 'text/html; charset=utf-8',
-          'x-tsm-worker': 'gone-markaurunleri',
+          'x-tsm-worker': 'gone-icerik-placeholder',
+          'x-robots-tag': 'noindex, nofollow',
+        },
+      });
+    }
+    // Named segments that exist as SEF URLs (e.g. blog slugs) → pass through to origin
+  }
+
+  // 5e. /markaurunleri/ — legacy brand path guard (v4.2 + v4.6)
+  // DLL Int32 markaID bekliyor, SEF URL string alınca 500 veriyor
+  // Doğru format: /markaurunleri/{numericID}/ — numeric ortak pipeline'a düşmeli
+  if (pathname.startsWith('/markaurunleri/')) {
+    const segment = pathname.replace('/markaurunleri/', '').replace(/\/+$/, '');
+
+    // v4.6: Boş / placeholder segment → 410
+    if (!segment || /[{}$]/.test(segment)) {
+      return new Response('This page has been permanently removed.', {
+        status: 410,
+        headers: {
+          'content-type': 'text/html; charset=utf-8',
+          'x-tsm-worker': 'gone-markaurunleri-placeholder',
+          'x-robots-tag': 'noindex, nofollow',
+        },
+      });
+    }
+
+    // Numeric ID → geçerli format, erken dönüş YOK — ortak fetch/HTMLRewriter/safety-net pipeline devam
+    // Legacy SEF string varyantları → 410 (DLL bunlarla 500 veriyor)
+    if (!/^\d+$/.test(segment)) {
+      return new Response('This page has been permanently removed.', {
+        status: 410,
+        headers: {
+          'content-type': 'text/html; charset=utf-8',
+          'x-tsm-worker': 'gone-markaurunleri-sef',
+          'x-robots-tag': 'noindex, nofollow',
         },
       });
     }
@@ -1030,17 +1096,42 @@ async function handleRequest(request) {
       : { cacheEverything: true, cacheTtl: 300 };
   const response = await fetch(request, { cf: cacheOpts });
 
-  // 7. v4.2: Origin 500 → 404 for /urunler/ (non-existent product slugs)
-  // DLL NullRef yerine temiz 404 döndür — Google index'ten düşürsün
-  if (response.status === 500 && pathname.startsWith('/urunler/')) {
-    return new Response('<html><head><title>404 - Ürün Bulunamadı</title></head><body><h1>404</h1><p>Bu ürün bulunamadı veya kaldırılmış olabilir.</p><p><a href="/">Ana Sayfa</a></p></body></html>', {
-      status: 404,
-      headers: {
-        'content-type': 'text/html; charset=utf-8',
-        'cache-control': 'public, max-age=3600',
-        'x-tsm-worker': 'origin-500-to-404',
-      },
-    });
+  // 7. v4.6: Origin 500 → 404/410 safety net for ALL legacy paths
+  // DLL NullRef/parse hataları yerine temiz HTTP status döndür — Google index'ten düşürsün
+  if (response.status === 500) {
+    const isLegacy500 =
+      pathname.startsWith('/urunler/') ||
+      pathname.startsWith('/Icerik/Goster/') ||
+      pathname.startsWith('/markaurunleri/') ||
+      pathname.startsWith('/kategori/') ||
+      pathname.startsWith('/arama');
+
+    if (isLegacy500) {
+      // /Icerik/Goster/, /markaurunleri/, /arama → 410 (kalıcı olarak kaldırıldı/geçersiz)
+      // /urunler/, /kategori/ → 404 (ürün/kategori bulunamadı)
+      const use410 =
+        pathname.startsWith('/Icerik/Goster/') ||
+        pathname.startsWith('/markaurunleri/') ||
+        pathname.startsWith('/arama');
+      const status = use410 ? 410 : 404;
+      const title = use410 ? '410 - Sayfa Kaldırıldı' : '404 - Sayfa Bulunamadı';
+      const body = use410
+        ? 'Bu URL kalıcı olarak kaldırıldı.'
+        : 'Bu sayfa bulunamadı veya kaldırılmış olabilir.';
+
+      return new Response(
+        `<html><head><title>${title}</title><meta name="robots" content="noindex, nofollow"></head><body><h1>${status}</h1><p>${body}</p><p><a href="/">Ana Sayfa</a></p></body></html>`,
+        {
+          status,
+          headers: {
+            'content-type': 'text/html; charset=utf-8',
+            'cache-control': 'public, max-age=3600',
+            'x-tsm-worker': `origin-500-to-${status}`,
+            'x-robots-tag': 'noindex, nofollow',
+          },
+        }
+      );
+    }
   }
 
   // 8. Build response with custom headers
