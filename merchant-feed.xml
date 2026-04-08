@@ -789,7 +789,7 @@
       <g:id>Arçelik ARCLK-INV-30KT-ARC</g:id>
       <g:title>Arçelik ARCLK-INV-30KT-ARC – 30 kW Trifaze On-Grid Inverter (AFCI Özellikli)</g:title>
       <g:description>Arçelik 30kW AFCI inverter, yangın koruma, anti-PID, %98,4 verimlilik ve IP66 dayanıklılıkla GES projeleri için üstün çözüm. Ücretsiz kargo!</g:description>
-      <g:link>https://www.turkiyesolarmarket.com.tr/urunler/inverter-markalari/arcelik-inv-30kt-arc</g:link>
+      <g:link>https://www.turkiyesolarmarket.com.tr/urunler/inverter-markalari/arcelik/arcelik-inv-30kt-arc</g:link>
       <g:image_link>https://www.turkiyesolarmarket.com.tr/epanel/upl/1453/big_arcelik-inv-30kt.jpg</g:image_link>
       <g:price>1986.66 USD</g:price>
       <g:availability>in_stock</g:availability>
@@ -803,7 +803,7 @@
       <g:id>Arçelik ARCLK-INV-30KT-ARC</g:id>
       <g:title>Arçelik ARCLK-INV-30KT-ARC – 30 kW Trifaze On-Grid Inverter (AFCI Özellikli)</g:title>
       <g:description>Arçelik 30kW AFCI inverter, yangın koruma, anti-PID, %98,4 verimlilik ve IP66 dayanıklılıkla GES projeleri için üstün çözüm. Ücretsiz kargo!</g:description>
-      <g:link>https://www.turkiyesolarmarket.com.tr/urunler/inverter-markalari/arcelik/arcelik-inv-30kt-arc</g:link>
+      <g:link>https://www.turkiyesolarmarket.com.tr/urunler/inverter-markalari/arcelik-inv-30kt-arc</g:link>
       <g:image_link>https://www.turkiyesolarmarket.com.tr/epanel/upl/1453/big_arcelik-inv-30kt.jpg</g:image_link>
       <g:price>1986.66 USD</g:price>
       <g:availability>in_stock</g:availability>
@@ -1377,20 +1377,6 @@
       <g:id>CHINT Power ECH3K-SML-EU</g:id>
       <g:title>CHINT Power ECH3K-SML-EU – 3 kW Tek Fazli Hibrit Inverter</g:title>
       <g:description>CHINT Power ECH3K-SML-EU 3 kW tek fazlı hibrit inverter. %97,40 verim, 2 MPPT, IP66 koruma, sessiz doğal soğutma. Türkiye fiyat ve stok.</g:description>
-      <g:link>https://www.turkiyesolarmarket.com.tr/urunler/inverterler--invertor/chint-power-ech3k-sml-eu-3-kw-tek-fazli-hibrit-inverter</g:link>
-      <g:image_link>https://www.turkiyesolarmarket.com.tr/epanel/upl/1587/big_chint-power-ech8k-th-eu.jpeg</g:image_link>
-      <g:price>981.83 EUR</g:price>
-      <g:availability>in_stock</g:availability>
-      <g:condition>new</g:condition>
-      <g:brand>Chint</g:brand>
-      <g:mpn>CHINT Power ECH3K-SML-EU</g:mpn>
-      <g:identifier_exists>false</g:identifier_exists>
-      <g:google_product_category>Hardware &gt; Power &amp; Electrical Supplies &gt; Power Inverters</g:google_product_category>
-    </item>
-    <item>
-      <g:id>CHINT Power ECH3K-SML-EU</g:id>
-      <g:title>CHINT Power ECH3K-SML-EU – 3 kW Tek Fazli Hibrit Inverter</g:title>
-      <g:description>CHINT Power ECH3K-SML-EU 3 kW tek fazlı hibrit inverter. %97,40 verim, 2 MPPT, IP66 koruma, sessiz doğal soğutma. Türkiye fiyat ve stok.</g:description>
       <g:link>https://www.turkiyesolarmarket.com.tr/urunler/inverter-markalari/chint/chint-power-ech3k-sml-eu-3-kw-tek-fazli-hibrit-inverter</g:link>
       <g:image_link>https://www.turkiyesolarmarket.com.tr/epanel/upl/1587/big_chint-power-ech8k-th-eu.jpeg</g:image_link>
       <g:price>981.83 EUR</g:price>
@@ -1406,6 +1392,20 @@
       <g:title>CHINT Power ECH3K-SML-EU – 3 kW Tek Fazli Hibrit Inverter</g:title>
       <g:description>CHINT Power ECH3K-SML-EU 3 kW tek fazlı hibrit inverter. %97,40 verim, 2 MPPT, IP66 koruma, sessiz doğal soğutma. Türkiye fiyat ve stok.</g:description>
       <g:link>https://www.turkiyesolarmarket.com.tr/urunler/inverter-markalari/chint-power-ech3k-sml-eu-3-kw-tek-fazli-hibrit-inverter</g:link>
+      <g:image_link>https://www.turkiyesolarmarket.com.tr/epanel/upl/1587/big_chint-power-ech8k-th-eu.jpeg</g:image_link>
+      <g:price>981.83 EUR</g:price>
+      <g:availability>in_stock</g:availability>
+      <g:condition>new</g:condition>
+      <g:brand>Chint</g:brand>
+      <g:mpn>CHINT Power ECH3K-SML-EU</g:mpn>
+      <g:identifier_exists>false</g:identifier_exists>
+      <g:google_product_category>Hardware &gt; Power &amp; Electrical Supplies &gt; Power Inverters</g:google_product_category>
+    </item>
+    <item>
+      <g:id>CHINT Power ECH3K-SML-EU</g:id>
+      <g:title>CHINT Power ECH3K-SML-EU – 3 kW Tek Fazli Hibrit Inverter</g:title>
+      <g:description>CHINT Power ECH3K-SML-EU 3 kW tek fazlı hibrit inverter. %97,40 verim, 2 MPPT, IP66 koruma, sessiz doğal soğutma. Türkiye fiyat ve stok.</g:description>
+      <g:link>https://www.turkiyesolarmarket.com.tr/urunler/inverterler--invertor/chint-power-ech3k-sml-eu-3-kw-tek-fazli-hibrit-inverter</g:link>
       <g:image_link>https://www.turkiyesolarmarket.com.tr/epanel/upl/1587/big_chint-power-ech8k-th-eu.jpeg</g:image_link>
       <g:price>981.83 EUR</g:price>
       <g:availability>in_stock</g:availability>
@@ -1741,7 +1741,7 @@
       <g:id>CHINT Power SCA50KTL-T/EU</g:id>
       <g:title>CHINT Power SCA50KTL-T/EU – 50 kW Üç Fazli String Inverter</g:title>
       <g:description>CHINT Power SCA50KTL-T/EU 50 kW üç fazlı string inverter. — verim, 2 MPPT, IP66 &amp; C5, AFCI. Türkiye stok ve fiyat bilgisi.</g:description>
-      <g:link>https://www.turkiyesolarmarket.com.tr/urunler/inverter-markalari/chint-power-sca50ktl-t-eu-50-kw-uc-fazli-string-inverter</g:link>
+      <g:link>https://www.turkiyesolarmarket.com.tr/urunler/inverter-markalari/chint/chint-power-sca50ktl-t-eu-50-kw-uc-fazli-string-inverter</g:link>
       <g:image_link>https://www.turkiyesolarmarket.com.tr/epanel/upl/1594/big_chint-power-ech8k-th-eu.jpeg</g:image_link>
       <g:price>2337.32 EUR</g:price>
       <g:availability>in_stock</g:availability>
@@ -1755,7 +1755,7 @@
       <g:id>CHINT Power SCA50KTL-T/EU</g:id>
       <g:title>CHINT Power SCA50KTL-T/EU – 50 kW Üç Fazli String Inverter</g:title>
       <g:description>CHINT Power SCA50KTL-T/EU 50 kW üç fazlı string inverter. — verim, 2 MPPT, IP66 &amp; C5, AFCI. Türkiye stok ve fiyat bilgisi.</g:description>
-      <g:link>https://www.turkiyesolarmarket.com.tr/urunler/inverter-markalari/chint/chint-power-sca50ktl-t-eu-50-kw-uc-fazli-string-inverter</g:link>
+      <g:link>https://www.turkiyesolarmarket.com.tr/urunler/inverter-markalari/chint-power-sca50ktl-t-eu-50-kw-uc-fazli-string-inverter</g:link>
       <g:image_link>https://www.turkiyesolarmarket.com.tr/epanel/upl/1594/big_chint-power-ech8k-th-eu.jpeg</g:image_link>
       <g:price>2337.32 EUR</g:price>
       <g:availability>in_stock</g:availability>
@@ -5979,7 +5979,7 @@
       <g:id>JKS-8H-EI</g:id>
       <g:title>Jinko JKS-8H-EI 8 kW Hibrit Inverter</g:title>
       <g:description>Jinko 8 kW hibrit inverter fiyatı, %10 indirimli depo teslim seçeneğiyle TürkiyeSolarMarket’te. Smart meter ve akım trafosu dâhil, RESS batarya uyumlu inverter.</g:description>
-      <g:link>https://www.turkiyesolarmarket.com.tr/urunler/inverter-markalari/jinko-jks8hei-8-kw-hibrit-inverter</g:link>
+      <g:link>https://www.turkiyesolarmarket.com.tr/urunler/inverter-markalari/jinko-solar/jinko-jks8hei-8-kw-hibrit-inverter</g:link>
       <g:image_link>https://www.turkiyesolarmarket.com.tr/epanel/upl/1521/big_turkiye_JKS-6-20H-EI.jpg</g:image_link>
       <g:price>1863.00 EUR</g:price>
       <g:availability>in_stock</g:availability>
@@ -5993,7 +5993,7 @@
       <g:id>JKS-8H-EI</g:id>
       <g:title>Jinko JKS-8H-EI 8 kW Hibrit Inverter</g:title>
       <g:description>Jinko 8 kW hibrit inverter fiyatı, %10 indirimli depo teslim seçeneğiyle TürkiyeSolarMarket’te. Smart meter ve akım trafosu dâhil, RESS batarya uyumlu inverter.</g:description>
-      <g:link>https://www.turkiyesolarmarket.com.tr/urunler/inverter-markalari/jinko-solar/jinko-jks8hei-8-kw-hibrit-inverter</g:link>
+      <g:link>https://www.turkiyesolarmarket.com.tr/urunler/inverter-markalari/jinko-jks8hei-8-kw-hibrit-inverter</g:link>
       <g:image_link>https://www.turkiyesolarmarket.com.tr/epanel/upl/1521/big_turkiye_JKS-6-20H-EI.jpg</g:image_link>
       <g:price>1863.00 EUR</g:price>
       <g:availability>in_stock</g:availability>
@@ -8614,20 +8614,6 @@
       <g:mpn>CM22-WIFI</g:mpn>
       <g:identifier_exists>false</g:identifier_exists>
       <g:google_product_category>Hardware &gt; Power &amp; Electrical Supplies &gt; Solar Energy Kits</g:google_product_category>
-    </item>
-    <item>
-      <g:id>CM26-4G</g:id>
-      <g:title>Solinved CM26 Solar Kamera 4G</g:title>
-      <g:description>Türkiye Solar Market | Fronius yetkili bayisi. Solar panel, inverter, lityum pil, EV şarj çözümleri. Arçelik, Huawei, BYD, Victron markaları. Stoktan hızlı teslimat, uygun fiyat. ☀️ Ücretsiz kargo!</g:description>
-      <g:link>https://www.turkiyesolarmarket.com.tr/urunler/inverter-markalari/solinved/solinved-cm26-solar-kamera-4g</g:link>
-      <g:image_link>https://www.turkiyesolarmarket.com.tr/epanel/upl/1790/big_cm26-4g.jpg</g:image_link>
-      <g:price>56.25 USD</g:price>
-      <g:availability>in_stock</g:availability>
-      <g:condition>new</g:condition>
-      <g:brand>Solinved</g:brand>
-      <g:mpn>CM26-4G</g:mpn>
-      <g:identifier_exists>false</g:identifier_exists>
-      <g:google_product_category>Hardware &gt; Power &amp; Electrical Supplies &gt; Power Inverters</g:google_product_category>
     </item>
     <item>
       <g:id>CM26-4G</g:id>
