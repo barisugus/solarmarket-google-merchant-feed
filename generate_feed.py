@@ -190,18 +190,21 @@ def scrape_product(url):
         "category": jsonld.get("category", ""),
     }
 
-    if not product["id"]:
-        slug = url.rstrip("/").split("/")[-1]
-        product["id"] = slug
+    # ID normalization (13 May 2026 fix):
+    # Old logic created 423 duplicate g:id entries (multiple products with same SKU)
+    # plus 7 IDs at exact 50-char limit (Merchant Center "Invalid id" warning).
+    # New: SKU/slug base normalized to ASCII-dash, capped at 40 chars,
+    # always suffixed with 8-char URL hash for guaranteed uniqueness per URL.
+    # Result: max 49 chars, deterministic, unique per product page.
+    raw_base = (product["id"] or "").strip() or url.rstrip("/").split("/")[-1]
+    base = re.sub(r"[^a-zA-Z0-9-]+", "-", raw_base).strip("-").lower()[:40].rstrip("-")
+    url_hash = hashlib.md5(url.encode()).hexdigest()[:8]
+    product["id"] = f"{base}-{url_hash}" if base else url_hash
 
     # GTIN lookup from hardcoded map (Fronius/BYD EAN codes)
     if not product["gtin"]:
         url_slug = url.rstrip("/").split("/")[-1]
         product["gtin"] = GTIN_MAP.get(url_slug, "")
-
-    if len(product["id"]) > 50:
-        h = hashlib.md5(product["id"].encode()).hexdigest()[:8]
-        product["id"] = product["id"][:41] + "-" + h
 
     product["google_category"] = map_google_category(url)
 
